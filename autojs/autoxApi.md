@@ -629,25 +629,147 @@ console.log(packageInfo);
 
 ## stopMusic()
 
+功能介绍：停止后台播放音乐
+
+- 参数：
+  - 无
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.stopMusic();
+```
+
 ## cancelAllNotifications()
 
-## callPhone()
+功能介绍：清除通知栏功能，由于 android 的安全限制，高版本的 android 已经无法调用清理通知栏的功能
+
+- 参数：
+  - 无
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.cancelAllNotifications();
+```
+
+## callPhone(phoneNumber)
+
+功能介绍：根据电话号码，拨打电话
+
+- 参数：
+  - 无
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.callPhone(10010);
+```
 
 ## endCall()
 
+功能介绍：挂断电话
+
+- 参数：
+  - 无
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.endCall();
+```
+
 ## uploadUrl()
 
-## active()
+功能介绍：上传文件地址
 
-## inputText()
+- 参数：
+  - 无
+- 返回：
+  - 无
+- 示例：
 
-## inputChar()
+```js
+let uploadUrl = autobot.uploadUrl();
+console.log("上传地址为：" + uploadUrl);
+```
 
-## execCmd()
+## inputText(text)
 
-## pressKeyCode()
+功能介绍：输入文本，支持中文
 
-## insertContact()
+- 参数：
+  - text 要输入的文本内容
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.inputText("hello world");
+```
+
+## inputChar(text)
+
+功能介绍：以按键模拟的方式输入，支持 ACSII 码，在一些特定情况下如果无法通过输入字符串来进行输入（比如某些支付界面），可以尝试此 api
+
+- 参数：
+  - text 要输入的文本内容，仅支持 ACSII 码（如字母数字）
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.inputText("hello world");
+```
+
+## execCmd(shell,timeout)
+
+功能介绍：执行 shell 命令
+
+- 参数：
+  - shell 要执行的命令，支持\n 换行符
+  - timeout 命令执行超时时间
+- 返回：
+  - 无
+- 示例：
+
+```js
+let result = autobot.execCmd("pm list packages");
+console.log(result);
+```
+
+## pressKeyCode(keyCode)
+
+功能介绍：模拟按键
+
+- 参数：
+  - keyCode 也可以参考 android sdk 的 KeyEvent.java 类
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.pressKeyCode(4);
+```
+
+## insertContact(name, phoneNumber)
+
+功能介绍：向通讯录插入新联系人
+
+- 参数：
+  - name 姓名
+  - phoneNumber 电话
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.insertContact("张三", "13312341234");
+```
 
 ## click()
 
