@@ -558,25 +558,74 @@ console.log(startActivityClass);
 功能介绍：根据包名启动应用程序
 
 - 参数：
-  - 无
-- 返回：
   - packageName：包名
-  - className：当前顶层 activity 的类名
-  - main：当前包名的启动类（启动入口）
+- 返回：
+  - 无
 - 示例：
 
 ```js
-let startActivityClass = autobot.getStartActivity("com.tencent.mm");
-console.log(startActivityClass);
+autobot.startPackage("com.tencent.mm");
 ```
 
-## stopPackage()
+## stopPackage(packageName)
 
-## clearPackage()
+功能介绍：根据包名停止应用程序
+
+- 参数：
+  - packageName：包名
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.stopPackage("com.tencent.mm");
+```
+
+## clearPackage(packageName)
+
+功能介绍：根据包名清除应用数据，危险操作
+
+- 参数：
+  - packageName：包名
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.clearPackage("com.tencent.mm");
+```
 
 ## getAllPackage()
 
-## getPackageInfo()
+功能介绍：获取所有的应用列表
+
+- 参数：
+  - 无
+- 返回：
+  - 无
+- 示例：
+
+```js
+let allPackages = autobot.getAllPackage();
+for (let package of allPackages) {
+  console.log(package);
+}
+```
+
+## getPackageInfo(packageName)
+
+功能介绍：根据包名获取应用程序详情
+
+- 参数：
+  - packageName：包名
+- 返回：
+  - 无
+- 示例：
+
+```js
+let packageInfo = autobot.getPackageInfo("com.tencent.mm");
+console.log(packageInfo);
+```
 
 ## stopMusic()
 
