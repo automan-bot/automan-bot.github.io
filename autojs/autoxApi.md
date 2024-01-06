@@ -771,29 +771,181 @@ autobot.pressKeyCode(4);
 autobot.insertContact("张三", "13312341234");
 ```
 
-## click()
+## click(x, y)
 
-## longClick()
+功能介绍：在屏幕的 x，y 坐标执行点击
 
-## press()
+- 参数：
+  - x，y 支持绝对坐标，比如传入 x=300，y=500
+  - x，y 支持百分比，比如传入 x=0.5，y=0.5，那么这个点就是屏幕的正中间
+- 返回：
+  - 无
+- 示例：
 
-## swipe()
+```js
+autobot.click(0.5, 0.5);
+```
 
-## emptyDir()
+## longClick(x, y)
 
-## delFile()
+功能介绍：在屏幕的 x，y 坐标执行长按
 
-## listFile()
+- 参数：
+  - x，y 支持绝对坐标，比如传入 x=300，y=500
+  - x，y 支持百分比，比如传入 x=0.5，y=0.5，那么这个点就是屏幕的正中间
+- 返回：
+  - 无
+- 示例：
 
-## downloadUrl()
+```js
+autobot.click(0.5, 0.5);
+```
 
-## sendSms()
+## press(x, y, duration)
 
-## playMusic()
+功能介绍：在屏幕的 x，y 坐标长按 duration 毫秒
 
-## startApp()
+- 参数：
+  - x，y 支持绝对坐标，比如传入 x=300，y=500
+  - x，y 支持百分比，比如传入 x=0.5，y=0.5，那么这个点就是屏幕的正中间
+  - duration 毫秒
+- 返回：
+  - 无
+- 示例：
 
-## installApk()
+```js
+autobot.press(0.5, 0.5, 1000);
+```
+
+## swipe(x1, y1, x2, y2, duration)
+
+功能介绍：从屏幕的 x1，y2 经过 duration 毫秒 滑动到 x2,y2 坐标
+
+- 参数：
+  - x1，y1,x2,y2 支持绝对坐标，比如传入 x1=300，y2=500,x2=300，y2=800
+  - x1，y1 支持百分比，比如传入 x1=0.5，y1=0.5，x1=0.5，y1=0.7
+  - duration 毫秒
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.swipe(0.5, 0.5, 0.5, 0.8, 3000);
+```
+
+## delFile(path)
+
+功能介绍：删除一个路径的文件或者文件夹
+
+- 参数：
+  - path 路径，比如`/sdcard/demo1`
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.delFile("/sdcard/demo1");
+```
+
+## listFile(path)
+
+功能介绍：列出一个文件夹
+
+- 参数：
+  - path 路径，比如`/sdcard`
+- 返回：
+  - Array[FileObj]
+    - isExecute：是否可执行
+    - isFile：是否时文件，否则是文件夹
+    - isRead：是否可读
+    - isWrite：是否可写
+    - lastModified：最后一次修改时间
+    - name：文件名称
+    - path：文件所在路径
+- 示例：
+
+```js
+autobot.listFile("/sdcard");
+```
+
+## downloadUrl(path)
+
+功能介绍：获取一个拼接好下载路径，直接访问就可以下载
+
+- 参数：
+  - path 路径，比如`/sdcard`
+- 返回：
+  - Array[FileObj]
+    - isExecute：是否可执行
+    - isFile：是否时文件，否则是文件夹
+    - isRead：是否可读
+    - isWrite：是否可写
+    - lastModified：最后一次修改时间
+    - name：文件名称
+    - path：文件所在路径
+- 示例：
+
+```js
+let downloadUrl = autobot.downloadUrl("/sdcard/download.txt");
+console.log(`url:${downloadUrl},可以复制到浏览器进行下载`);
+```
+
+## sendSms(phoneNumber,content)
+
+功能介绍：向一个号码发送短信，由于 android 系统的安全限制，若无法发送短信，通常会跳转到发送页面
+
+- 参数：
+  - phoneNumber 号码
+  - content 短信内容
+- 返回：
+  - Boolean
+- 示例：
+
+```js
+autobot.sendSms(10000, "hello");
+```
+
+## playMusic(musicUrl)
+
+功能介绍：调用设备播放声音（注意：此接口在 android10 以下系统可能会失败），请谨慎使用
+
+- 参数：
+  - musicUrl 网络音乐 url
+- 返回：
+  - Boolean
+- 示例：
+
+```js
+autobot.playMusic("https://www.runoob.com/try/demo_source/horse.ogg");
+```
+
+## startApp(packageName)
+
+功能介绍：使用包名启动一个 app
+
+- 参数：
+  - packageName 应用包名
+- 返回：
+  - Boolean
+- 示例：
+
+```js
+autobot.startApp("com.tencent.mm");
+```
+
+## installApk(apkPath)
+
+功能介绍：安装一个 apk，由于 android 系统的安全限制，部分手机会进行二次确认
+
+- 参数：
+  - apkPath apk 路径
+- 返回：
+  - Boolean
+- 示例：
+
+```js
+autobot.installApk("/sdcard/weibo.apk");
+```
 
 ## unInstallApp()
 
