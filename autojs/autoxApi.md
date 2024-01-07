@@ -947,39 +947,388 @@ autobot.startApp("com.tencent.mm");
 autobot.installApk("/sdcard/weibo.apk");
 ```
 
-## unInstallApp()
+## unInstallApp(packageName)
 
-## killApp()
+功能介绍：根据包名卸载一个 android 应用程序
 
-## tap
+- 参数：
+  - packageName 应用包名
+- 返回：
+  - Boolean
+- 示例：
 
-## inputKey
+```js
+autobot.unInstallApp("com.tencent.mm");
+```
+
+## killApp(packageName)
+
+功能介绍：根据包名停止一个 android 应用程序
+
+- 参数：
+  - packageName 应用包名
+- 返回：
+  - Boolean
+- 示例：
+
+```js
+autobot.killApp("com.tencent.mm");
+```
+
+# 下列 api 是为了兼容 autojs pc 自动生成的代码
+
+## tap(x, y)
+
+功能介绍：在屏幕的 x，y 坐标执行点击
+
+- 参数：
+  - x，y 支持绝对坐标，比如传入 x=300，y=500
+  - x，y 支持百分比，比如传入 x=0.5，y=0.5，那么这个点就是屏幕的正中间
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.click(0.5, 0.5);
+```
+
+## inputKey(keyCode)
+
+功能介绍：模拟按键
+
+- 参数：
+  - keyCode 也可以参考 android sdk 的 KeyEvent.java 类
+- 返回：
+  - 无
+- 示例：
+
+```js
+autobot.inputKey(4);
+```
 
 ## execAdbShell
 
-## timeout
+功能介绍：执行 shell 命令
 
-## timeout2
+- 参数：
+  - shell 要执行的命令，支持\n 换行符
+  - timeout 命令执行超时时间
+- 返回：
+  - 无
+- 示例：
 
-## gesture
+```js
+let result = autobot.execAdbShell("pm list packages");
+console.log(result);
+```
 
-## gestures
+## timeout(millisecond)
 
-## getScreenDocument
+功能介绍：休眠 millisecond 毫秒后，接着执行
 
-## querySelectorAll
+- 参数：
+  - millisecond 毫秒值
+- 返回：
+  - 无
+- 示例：
 
-## querySelector
+```js
+autobot.timeout(1000);
+```
 
-## waitForSelector
+## timeout2(start,end)
 
-## findTextAll
+功能介绍：随机休眠 X 秒，X 介于 start-end 之间
 
-## findText
+- 参数：
+  - start 秒
+  - end 秒
+- 返回：
+  - 无
+- 示例：
 
-## waitForText
+```js
+//随机休眠3-5秒
+autobot.timeout2(3, 5);
+```
 
-## captureScreen
+## gesture(duration, [x1, y1], [x2, y2], ...)
+
+功能介绍：模拟手势操作。例如 gesture(2000, [0, 0], [500, 500], [500, 1000])为模拟一个从(0, 0)到(500, 500)到(500, 100)的手势操作，时长为 2 秒
+
+- 参数：
+  - duration 手势持续时间
+  - [x, y]... 手势滑动路径的一系列坐标（支持百分比和绝对坐标）
+- 返回：
+  - 无
+- 示例：
+
+```js
+//在屏幕上模拟画出数字2的手势
+autobot.gesture(
+  2000,
+  [0.34444444444444444, 0.28205128205128205],
+  [0.3611111111111111, 0.28076923076923077],
+  [0.4388888888888889, 0.28076923076923077],
+  [0.4777777777777778, 0.2833333333333333],
+  [0.49722222222222223, 0.28974358974358977],
+  [0.5333333333333333, 0.3076923076923077],
+  [0.5555555555555556, 0.33589743589743587],
+  [0.5694444444444444, 0.3730769230769231],
+  [0.5722222222222222, 0.4115384615384615],
+  [0.5527777777777778, 0.4512820512820513],
+  [0.5305555555555556, 0.48333333333333334],
+  [0.4888888888888889, 0.5205128205128206],
+  [0.4527777777777778, 0.5461538461538461],
+  [0.41388888888888886, 0.5641025641025641],
+  [0.36944444444444446, 0.5782051282051283],
+  [0.30277777777777776, 0.5935897435897436],
+  [0.25555555555555554, 0.6025641025641025],
+  [0.24444444444444444, 0.6064102564102564],
+  [0.225, 0.6089743589743589],
+  [0.2388888888888889, 0.6089743589743589],
+  [0.37222222222222223, 0.6089743589743589],
+  [0.525, 0.6089743589743589],
+  [0.5722222222222222, 0.6089743589743589],
+  [0.6416666666666667, 0.6076923076923076],
+  [0.6888888888888889, 0.6064102564102564],
+  [0.7138888888888889, 0.6064102564102564],
+  [0.7222222222222222, 0.6064102564102564],
+  [0.7222222222222222, 0.6064102564102564]
+);
+```
+
+## gestures([delay, duration, [x, y], [x, y], ...], [delay, duration, [x, y], [x, y], ...], ...)
+
+功能介绍：同时模拟多个手势。每个手势的参数为[delay, duration, 手势路径点位], delay 为延迟多久(毫秒)才执行该手势；duration 为手势执行时长；坐标为手势经过的点的坐标。其中 delay 参数可以省略，默认为 0。
+
+- 参数：
+  - delay 延迟多少毫秒（ms）执行该手势
+  - duration 手势持续时间
+  - [x, y]... 手势滑动路径的一系列坐标（支持百分比和绝对坐标）
+- 返回：
+  - 无
+- 示例：
+
+```js
+//双指捏合
+autobot.gestures(
+  [0, 500, [800, 300], [500, 1000]],
+  [0, 500, [300, 1500], [500, 1000]]
+);
+```
+
+## getScreenDocument()
+
+功能介绍：返回当前屏幕的 dom 对象（本质是用 cheerio 加载屏幕 xml 后返回 dom 对象），可以直接使用 cheerio 语法查找对象。
+
+- 参数：
+  - 无
+- 返回：
+  - 无
+- 示例：
+
+```js
+//获取屏幕的dom对象
+let $ = autobot.getScreenDocument();
+
+//获取dom text属性包含 设置 的dom
+let result = $(`*[text*="设置"]`);
+
+//获取第一个包含设置文本的dom元素在屏幕中的坐标
+let result2 = $(`*[text*="设置"]`).eq(0).attr("bound");
+//result2: 33-1215-287-1297 xml原始str，代表x1,y1,x2,y2
+console.log(result2);
+```
+
+## querySelectorAll(selector, option = {})
+
+功能介绍：根据 selector 查找元素
+
+- 参数：
+  - `selector` jquery 选择器，可以参考快速入门->[选择器查找高级](quickStart?id=选择器查找高级)
+  - `option`={region}
+    - `region`：查找区域，默认全屏，{x1:0,y1:0,x2:1,y2:1}代表区域的开始坐标和结束坐标,以百分比的形式，取值范围(0-1)，会自动和屏幕分辨率换算
+      - 例如你的屏幕是 720\*1280，那么{x1:0,y1:0,x2:1,y2:1}代表整个屏幕，{x1:0.5,y1:0.5,x2:1,y2:1}代表屏幕其实坐标 360,640，结束坐标 720，1080，也就是屏幕的第右下区域
+      - 该设置可以根据图形化界面自动生成，你无需自己计算
+- 返回：
+  - [DOMObj{`bounds,text`,...},DOMObj,DOMObj]，未找到时返回空数组[]
+  - bounds {mx,my,x1,y1, x2,y2} mx,my=中心点坐标，x1,y1 区域开始坐标，x2,y2 区域结束坐标
+  - text 节点的文本
+- 示例：
+
+```js
+//等待屏幕上出现 文本包含 设置
+let isShowSetting = autobot.waitForSelector(`*[text*="设置"]`, {
+  region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+});
+if (isShowSetting) {
+  console.log("出现了");
+} else {
+  console.log("没出现");
+}
+//点击第一个包含设置的文本
+let texts = autobot.querySelectorAll(`*[text*="设置"]`, {
+  region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+});
+for (let item of texts) {
+  let { mx, my } = item.bounds;
+  autobot.tap(mx, my);
+  break;
+}
+```
+
+## querySelector(selector, option = {})
+
+功能介绍：根据 selector 查找第一个符合条件的元素
+
+- 参数：
+  - `selector` jquery 选择器，可以参考快速入门->[选择器查找高级](quickStart?id=选择器查找高级)
+  - `option`={region}
+    - `region`：查找区域，默认全屏，{x1:0,y1:0,x2:1,y2:1}代表区域的开始坐标和结束坐标,以百分比的形式，取值范围(0-1)，会自动和屏幕分辨率换算
+      - 例如你的屏幕是 720\*1280，那么{x1:0,y1:0,x2:1,y2:1}代表整个屏幕，{x1:0.5,y1:0.5,x2:1,y2:1}代表屏幕其实坐标 360,640，结束坐标 720，1080，也就是屏幕的第右下区域
+      - 该设置可以根据图形化界面自动生成，你无需自己计算
+- 返回：
+  - DOMObj{`bounds,text`,...}，未找到时返回 undefined
+  - bounds {mx,my,x1,y1, x2,y2} mx,my=中心点坐标，x1,y1 区域开始坐标，x2,y2 区域结束坐标
+  - text 节点的文本
+- 示例：
+
+```js
+//点击第一个包含设置的文本
+let text = autobot.querySelector(`*[text*="设置"]`, {
+  region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+});
+let { mx, my } = text.bounds;
+autobot.tap(mx, my);
+```
+
+## waitForSelector(selector, option = {})
+
+功能介绍：等待匹配的 selector 出现,一般和 querySelector 配合使用
+
+- 参数：
+  - `selector` jquery 选择器，可以参考快速入门->[选择器查找高级](quickStart?id=选择器查找高级)
+  - `option`={region}
+    - `retry`：默认值 10，内部会轮询 10 次，每次间隔 500ms，10 次都找不到的情况下，会返回 false
+    - `region`：查找区域，默认全屏，{x1:0,y1:0,x2:1,y2:1}代表区域的开始坐标和结束坐标,以百分比的形式，取值范围(0-1)，会自动和屏幕分辨率换算
+      - 例如你的屏幕是 720\*1280，那么{x1:0,y1:0,x2:1,y2:1}代表整个屏幕，{x1:0.5,y1:0.5,x2:1,y2:1}代表屏幕其实坐标 360,640，结束坐标 720，1080，也就是屏幕的第右下区域
+      - 该设置可以根据图形化界面自动生成，你无需自己计算
+- 返回：
+  - `boolean` true 代表成功匹配，false 代表没有匹配
+- 示例：
+
+```js
+//等待屏幕上出现 文本包含 设置
+let isShowSetting = autobot.waitForSelector(`*[text*="设置"]`, {
+  region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+});
+if (isShowSetting) {
+  console.log("出现了");
+} else {
+  console.log("没出现");
+}
+```
+
+## findTextAll(text,option = {})
+
+功能介绍：根据文本查找所有包含此文本的 dom 元素
+
+- 参数：
+  - `text` 等待出现的文本，多个文本可以使用`$`符号分割
+  - `option`={region}
+    - `retry`：默认值 10，内部会轮询 10 次，每次间隔 500ms，10 次都找不到的情况下，会返回 false
+    - `accurate`：是否精准匹配，比如我们在手机的设置页面查找设置两个字，精准匹配只会匹配到标题上的 设置；取消精准匹配后能匹配 设置、 应用设置、更多设置
+    - `region`：查找区域，默认全屏，{x1:0,y1:0,x2:1,y2:1}代表区域的开始坐标和结束坐标,以百分比的形式，取值范围(0-1)，会自动和屏幕分辨率换算
+      - 例如你的屏幕是 720\*1280，那么{x1:0,y1:0,x2:1,y2:1}代表整个屏幕，{x1:0.5,y1:0.5,x2:1,y2:1}代表屏幕其实坐标 360,640，结束坐标 720，1080，也就是屏幕的第右下区域
+      - 该设置可以根据图形化界面自动生成，你无需自己计算
+- 返回：
+  - [DOMObj{`bounds,text`,...},DOMObj,DOMObj]
+    - bounds {mx,my,x1,y1, x2,y2} mx,my=中心点坐标，x1,y1 区域开始坐标，x2,y2 区域结束坐标
+    - text 节点的文本
+- 示例：
+
+```js
+let texts = autobot.findTextAll("设置", {
+  accurate: false,
+  region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+});
+for (let item of texts) {
+  console.log(item.text);
+}
+```
+
+## findText(text,option = {})
+
+功能介绍：根据文本查找第一个包含此文本的 dom 元素
+
+- 参数：
+  - `text` 等待出现的文本，多个文本可以使用`$`符号分割
+  - `option`={region}
+    - `retry`：默认值 10，内部会轮询 10 次，每次间隔 500ms，10 次都找不到的情况下，会返回 false
+    - `accurate`：是否精准匹配，比如我们在手机的设置页面查找设置两个字，精准匹配只会匹配到标题上的 设置；取消精准匹配后能匹配 设置、 应用设置、更多设置
+    - `region`：查找区域，默认全屏，{x1:0,y1:0,x2:1,y2:1}代表区域的开始坐标和结束坐标,以百分比的形式，取值范围(0-1)，会自动和屏幕分辨率换算
+      - 例如你的屏幕是 720\*1280，那么{x1:0,y1:0,x2:1,y2:1}代表整个屏幕，{x1:0.5,y1:0.5,x2:1,y2:1}代表屏幕其实坐标 360,640，结束坐标 720，1080，也就是屏幕的第右下区域
+      - 该设置可以根据图形化界面自动生成，你无需自己计算
+- 返回：
+  - [DOMObj{`bounds,text`,...},DOMObj,DOMObj]
+    - bounds {mx,my,x1,y1, x2,y2} mx,my=中心点坐标，x1,y1 区域开始坐标，x2,y2 区域结束坐标
+    - text 节点的文本
+- 示例：
+
+```js
+let text = autobot.findText("应用设置", {
+  accurate: true,
+  region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+});
+if (text) {
+  let { mx, my } = text.bounds;
+  autobot.tap(mx, my);
+}
+```
+
+## waitForText(text,option = {})
+
+功能介绍：等待匹配的文本出现,一般和 findText 配合使用
+
+- 参数：
+  - `text` 等待出现的文本，多个文本可以使用`$`符号分割
+  - `option`={region}
+    - `retry`：默认值 10，内部会轮询 10 次，每次间隔 500ms，10 次都找不到的情况下，会返回 false
+    - `accurate`：是否精准匹配，比如我们在手机的设置页面查找设置两个字，精准匹配只会匹配到标题上的 设置；取消精准匹配后能匹配 设置、 应用设置、更多设置
+    - `region`：查找区域，默认全屏，{x1:0,y1:0,x2:1,y2:1}代表区域的开始坐标和结束坐标,以百分比的形式，取值范围(0-1)，会自动和屏幕分辨率换算
+      - 例如你的屏幕是 720\*1280，那么{x1:0,y1:0,x2:1,y2:1}代表整个屏幕，{x1:0.5,y1:0.5,x2:1,y2:1}代表屏幕其实坐标 360,640，结束坐标 720，1080，也就是屏幕的第右下区域
+      - 该设置可以根据图形化界面自动生成，你无需自己计算
+- 返回：
+  - `boolean` true 代表成功匹配，false 代表没有匹配
+- 示例：
+
+```js
+//等待屏幕上出现 文本包含 设置
+let isShowSetting = await waitForText(`设置`, {
+  region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+});
+if (isShowSetting) {
+  console.log("屏幕上出现 设置 了");
+} else {
+  console.log("没有找到");
+}
+```
+
+## captureScreen()
+
+功能介绍：获取屏幕截图
+
+- 参数：
+  - 无
+- 返回：
+  - 返回一个 autox.js 内的[Image 对象](http://doc.autoxjs.com/#/images?id=image)
+- 示例：
+
+```js
+let image = autobot.captureScreen();
+image.saveTo("/sdcard/screen.jpg");
+```
 
 ## findImage
 
