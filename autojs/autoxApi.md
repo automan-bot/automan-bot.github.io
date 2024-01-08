@@ -1305,7 +1305,7 @@ if (text) {
 
 ```js
 //等待屏幕上出现 文本包含 设置
-let isShowSetting = await waitForText(`设置`, {
+let isShowSetting = autobot.waitForText(`设置`, {
   region: { x1: 0, y1: 0, x2: 1, y2: 1 },
 });
 if (isShowSetting) {
@@ -1330,12 +1330,155 @@ let image = autobot.captureScreen();
 image.saveTo("/sdcard/screen.jpg");
 ```
 
-## findImage
+## findImage(base64Img,option={})
 
-## findColor
+功能介绍：在大图片 img 中查找小图片 template 的位置（模块匹配），找到时返回位置坐标(Point)
 
-## findAllPointsForColor
+- 参数：
+  - `base64Img` 需要查找的图片 base64 编码
+  - `option`={threshold,region}
+    - `threshold`: 取值范围 0.1-1，建议`0.5-0.9`之间，越大代表匹配度越高，但是容易找不出来；`0.8`测试出来效果较好,实际使用时候可以通过这个调整匹配精准度
+    - `region`：查找区域，默认全屏，{x1:0,y1:0,x2:1,y2:1}代表区域的开始坐标和结束坐标,以百分比的形式，取值范围(0-1)，会自动和屏幕分辨率换算
+    - 例如你的屏幕是 720\*1280，那么{x1:0,y1:0,x2:1,y2:1}代表整个屏幕，{x1:0.5,y1:0.5,x2:1,y2:1}代表屏幕其实坐标 360,640，结束坐标 720，1080，也就是屏幕的第右下区域
+- 返回：
+  - `array` [itemObj={`confidence`,`result`},itemObj,itemObj]
+    - `confidence` 置信度
+    - `result` {x,y,mx,my}分别代表匹配区域到的起始坐标，以及中心坐标
+- 示例：
 
-## findMultiColors
+```js
+//查找微信聊天列表页面的小铃铛，点击后返回
+var result = autobot.findImage(
+  "data:image/jpeg;base64,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",
+  {
+    threshold: 0.8,
+    region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+  }
+);
+console.log(result);
+for (let item of result) {
+  console.log(item);
+  break;
+}
+```
 
-## exit
+## findColor(color, option = {})
+
+功能介绍：寻找颜色 color。找到时返回找到的点 Point，找不到时返回 null
+
+- 参数：
+  - `color` 需要查找的颜色的值，如`#ff0000`
+  - `option`={threshold,region}
+    - `threshold`: 取值范围 0.1-1，建议`0.5-0.9`之间，越大代表匹配度越高，但是容易找不出来；`0.8`测试出来效果较好,实际使用时候可以通过这个调整匹配精准度
+    - `region`：查找区域，默认全屏，{x1:0,y1:0,x2:1,y2:1}代表区域的开始坐标和结束坐标,以百分比的形式，取值范围(0-1)，会自动和屏幕分辨率换算
+    - 例如你的屏幕是 720\*1280，那么{x1:0,y1:0,x2:1,y2:1}代表整个屏幕，{x1:0.5,y1:0.5,x2:1,y2:1}代表屏幕其实坐标 360,640，结束坐标 720，1080，也就是屏幕的第右下区域
+- 返回：
+  - `Point` 位置坐标
+    - `x` 水平位置
+    - `y` 垂直位置
+- 示例：
+
+```js
+//查找屏幕上是否出现了蓝色
+var sColor = autobot.findColor("#7fd12e", {
+  threshold: 4,
+  region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+});
+if (sColor) {
+  console.log("屏幕上出现了微信图标绿色的点");
+  let { x, y } = sColor;
+  console.log(`屏幕上出现了微信图标绿色的点，第一个点坐标为:(${x},${y})`);
+} else {
+  console.log("屏幕上未出现微信图标绿色的点");
+}
+```
+
+## findAllPointsForColor(color, option = {})
+
+功能介绍：寻找颜色 color。找到时返回找到的点 Point，找不到时返回 null
+
+- 参数：
+  - `color` 需要查找的颜色的值，如`#ff0000`
+  - `option`={threshold,region}
+    - `threshold`: 取值范围 0.1-1，建议`0.5-0.9`之间，越大代表匹配度越高，但是容易找不出来；`0.8`测试出来效果较好,实际使用时候可以通过这个调整匹配精准度
+    - `region`：查找区域，默认全屏，{x1:0,y1:0,x2:1,y2:1}代表区域的开始坐标和结束坐标,以百分比的形式，取值范围(0-1)，会自动和屏幕分辨率换算
+    - 例如你的屏幕是 720\*1280，那么{x1:0,y1:0,x2:1,y2:1}代表整个屏幕，{x1:0.5,y1:0.5,x2:1,y2:1}代表屏幕其实坐标 360,640，结束坐标 720，1080，也就是屏幕的第右下区域
+- 返回：
+
+  - [Point{x,y},....]
+    - `Point` 位置坐标
+      - `x` 水平位置
+      - `y` 垂直位置
+
+- 示例：
+
+```js
+//查找屏幕上是否出现了蓝色
+var allPoint = autobot.findAllPointsForColor("#7fd12e", {
+  threshold: 4,
+  region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+});
+console.log(allPoint.length);
+```
+
+## findMultiColors(firstColor, colors, option = {})
+
+- `注意：`此功能由于百分比坐标换算会有精度问题，所以暂不支持百分比坐标，调用改 api 需要注意开发机和用户机的分辨率问题
+
+- 功能介绍：
+
+  1.在图片 img 中找到颜色 firstColor 的位置(x0, y0)
+
+  2.对于数组 colors 的每个元素[x, y, color]，检查图片 img 在位置(x + x0, y + y0)上的像素是否是颜色 color，是的话返回(x0, y0)，否则继续寻找 firstColor 的位置，重新执行第 1 步
+
+  3.整张图片都找不到时返回 null
+
+- 参数：
+  - `firstColor` 颜色值，如`#ff0000`
+  - `colors` {Array} 表示剩下的点相对于第一个点的位置和颜色的数组，数组的每个元素为[x, y, color]
+  - `option`={threshold,region}
+    - `threshold`: 取值范围 0.1-1，建议`0.5-0.9`之间，越大代表匹配度越高，但是容易找不出来；`0.8`测试出来效果较好,实际使用时候可以通过这个调整匹配精准度
+    - `region`：查找区域，默认全屏，{x1:0,y1:0,x2:1,y2:1}代表区域的开始坐标和结束坐标,以百分比的形式，取值范围(0-1)，会自动和屏幕分辨率换算
+    - 例如你的屏幕是 720\*1280，那么{x1:0,y1:0,x2:1,y2:1}代表整个屏幕，{x1:0.5,y1:0.5,x2:1,y2:1}代表屏幕其实坐标 360,640，结束坐标 720，1080，也就是屏幕的第右下区域
+- 返回：
+  - `Point` 位置坐标
+    - `x` 水平位置
+    - `y` 垂直位置
+- 示例：
+
+```js
+//查找并点击微信图标，注意此接口不支持百分比坐标，因此有屏幕分辨率适配问题
+var mColor = autobot.findMultiColors(
+  "#75d02a",
+  [
+    [20, -10, "#0f6e2c"],
+    [16, 29, "#e9efe1"],
+    [-8, 17, "#70c625"],
+    [9, -24, "#7fdc2c"],
+  ],
+  {
+    threshold: 4,
+    region: { x1: 0, y1: 0, x2: 1, y2: 1 },
+  }
+);
+if (mColor) {
+  let { x, y } = mColor;
+  autobot.tap(x, y);
+} else {
+  toastLog("未找到颜色对应的点");
+}
+```
+
+## exit()
+
+功能介绍：立即停止脚本运行。注意这里是 autox.js 的退出，如果使用 `autobot.exit()`则会使 autobot 服务结束
+
+- 参数：
+  - 无
+
+```js
+function main() {
+  exit();
+}
+main();
+```
