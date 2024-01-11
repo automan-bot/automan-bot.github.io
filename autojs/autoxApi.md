@@ -975,7 +975,7 @@ autobot.unInstallApp("com.tencent.mm");
 autobot.killApp("com.tencent.mm");
 ```
 
-# 下列 api 是为了兼容 autojs pc 自动生成的代码
+# 兼容 AutoJS PC 版自动生成的代码 API
 
 ## tap(x, y)
 
