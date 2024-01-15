@@ -352,6 +352,7 @@ console.log(screenRotation);
 
 ```js
 let contacts = autobot.getAllContact();
+//let contacts = autobot.getAllContact("10010");
 console.log(contacts);
 ```
 
