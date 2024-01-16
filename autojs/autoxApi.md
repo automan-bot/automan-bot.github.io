@@ -529,7 +529,7 @@ autobot.setDisplayName("设备1");
 - 返回：
   - packageName：包名
   - className：当前顶层 activity 的类名
-  - main：当前包名的启动类（启动入口）
+  - main：当前顶层 App 的启动类（启动入口）
 - 示例：
 
 ```js
