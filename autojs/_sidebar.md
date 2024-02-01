@@ -3,6 +3,7 @@
 - [准备工作](/prepare)
 - [快速入门](/quickStart)
 - [脚本 API](/shellApi)
+- [Autox.js 支持](/autoxApi)
 - 学习路线
   - [1，JavaScript 基础](/course)
   - [2，学习脚本 API](/shellApi)
@@ -13,6 +14,8 @@
 - [文档更新日志](/changeLog)
 - 相关资源
   <!-- - [脚手架工具](/autojsStarter) -->
+  - [AutoBot](https://doc.tntok.top)
+  - [Tntok 投屏控制](https://www.tntok.top)
   - [ADB 用法](/awesomeAdb)
   - [jquery 语法](https://jquery.cuishifeng.cn/attributeEquals.html)
   - [NodeJS 文档](https://nodejs.org/dist/latest-v16.x/docs/api/)

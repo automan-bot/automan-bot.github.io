@@ -1,6 +1,21 @@
-# 自动化相关 API 已经支持 Autox.js
+# 项目简介
 
-# autox.js Api
+- Autox.js 根据原项目协议，已经开源，github 地址：[https://github.com/automan-bot/AutoX](https://github.com/automan-bot/AutoX)
+
+## 为什么要使用此版本的 Autox.js？
+
+- Auto.js 已经多年不更新，并且仓库已经关闭，Auto.js pro 闭源且收费，并且受政策影响已经关闭。
+- AutoX.js 是 Auto.js 开源版本的分支，且一直在维护。
+- 现有的 android 自动化程序，大部分基于无障碍实现，无障碍不稳定，且容易被检测。
+- Autobot 服务是基于 android 调试公开的接口开发服务，支持运行在 adb 和 root 模式，且支持 rom 集成。root 模式下和 rom 集成，无需开启 adb 调试和无障碍即可完成
+
+## 使用步骤：
+
+1. 手机已经安装并且运行 AutoBot 应用程序
+2. 下载并安装 github release 中的 AutoX.js 应用程序
+   3，即可使用 AutoJS 生成
+
+# Autox.js api
 
 ## 阅读须知
 
