@@ -2,7 +2,7 @@
 
 ![logo](./media/logo2.png)
 
-# AutoJS PC 版 <small>6.2.0</small>
+# AutoJS PC 版 <small>1.0.2</small>
 
 > 一个在 PC 端快速实现 Android 自动化功能的一个软件
 
