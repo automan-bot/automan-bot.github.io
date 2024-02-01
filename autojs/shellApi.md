@@ -287,28 +287,6 @@ await inputText(`helloworld`);
 await inputText(`你好，世界`);
 ```
 
-## inputTextArr(textArr=[])
-
-功能介绍：当某个输入框获取焦点的时候，随机的从数组内取一个 text，进行输入。
-
-比如我们想要给我们的客户发送消息，我们不想每个用户收到的信息一致，另外重复发送相同信息可能会被平台封禁。
-
-当然你也可以使用 inputText，编写自己的逻辑。
-
-- 参数：
-  - `textArr`需要输入的文本，比如`["你好","不错哦","支持你"]`
-- 注意：
-  - ~~(3.0 版本已经不需要)使用前需要把输入法切换到 autojs adb Keyborad~~
-- 示例：
-
-```js
-//使用随机消息发给客户
-let pinglunArr = ["你好", "不错哦", "支持你"];
-for (let i = 0; i < 10; i++) {
-  await inputTextArr(pinglunArr);
-}
-```
-
 ## inputChar(chars)
 
 功能介绍：部分输入框可能无法使用 inputText 来进行输入（如 xx 支付密码输入界面），这个会把 text 转换成对应的按键编码进行输入，因此只能支持部分 ASCII 字符（不支持中文）
@@ -335,27 +313,6 @@ await inputChar(`1234abcd`);
 ```js
 //返回上一个页面
 await inputKey(4);
-```
-
-## getPackages()
-
-功能介绍：获取手机已安装应用的包名列表
-
-- 参数：
-  - 无
-- 返回：
-  - array [packageName,packageName]
-    - packageName 包名，如`com.tencent.mm`
-- 示例：
-
-```js
-let packages = await getPackages();
-const result = packages.some((item) => item == "com.tencent.mm");
-if (result) {
-  console.log("手机已安装微信");
-} else {
-  console.log("手机未安装微信");
-}
 ```
 
 ## getTopApp()
