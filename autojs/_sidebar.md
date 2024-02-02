@@ -1,5 +1,4 @@
 - [首页](/)
-  [comment]: <> (\* [**Pro9: 基于 Node.js 的全新版本**]&#40;https://pro.autojs.org/docs/v9/zh&#41;)
 - [准备工作](/prepare)
 - [快速入门](/quickStart)
 - [脚本 API](/shellApi)
