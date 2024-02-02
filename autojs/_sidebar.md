@@ -13,7 +13,7 @@
 - [文档更新日志](/changeLog)
 - 相关资源
   <!-- - [脚手架工具](/autojsStarter) -->
-  - [AutoBot](https://doc.tntok.top)
+  - [AutoBot 核心](https://doc.tntok.top)
   - [Tntok 投屏控制](https://www.tntok.top)
   - [ADB 用法](/awesomeAdb)
   - [jquery 语法](https://jquery.cuishifeng.cn/attributeEquals.html)
