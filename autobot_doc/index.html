@@ -37,9 +37,9 @@
       if (!lang) {
         var userLang = navigator.language || navigator.userLanguage;
         if (userLang.startsWith("zh")) {
-          window.location.href = "/#/zh-cn/"; // 跳转到中文版本
+          window.location.hash = "#/zh-cn/"; // 跳转到中文版本
         } else {
-          window.location.href = "/#/en/"; // 跳转到英文版本
+          window.location.hash = "#/en/"; // 跳转到英文版本
         }
       }
       window.$docsify = {
