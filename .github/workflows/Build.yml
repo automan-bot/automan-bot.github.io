@@ -3,7 +3,7 @@ name: Build Prod
 on:
   push:
     branches:
-      - master
+      - gh-pages
   pull_request:
 
 permissions:
@@ -30,7 +30,7 @@ jobs:
         if: env.SSH_HOST != ''
         uses: garygrossgarten/github-action-ssh@release
         with:
-          host: ${{ secrets.SSH_HOST }}
+          host: ${{ vars.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
