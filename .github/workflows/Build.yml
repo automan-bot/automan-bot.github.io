@@ -32,7 +32,7 @@ jobs:
       - name: 发布内容
         if: env.FTP_HOST != ''
         run: |
-          npm i -g basic-ftp
+          npm i
           set FTP_HOST=${{secrets.FTP_HOST}}
           # set FTP_PORT=${{secrets.FTP_PORT}}
           set FTP_USER=${{secrets.FTP_USER}}
