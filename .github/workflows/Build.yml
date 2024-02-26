@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: 安装依赖
         run: |
-          npm i -g esno basic-ftp
+          npm i -g esno@0.16.3 basic-ftp
       - name: 发布内容
         if: env.FTP_HOST != ''
         run: |
