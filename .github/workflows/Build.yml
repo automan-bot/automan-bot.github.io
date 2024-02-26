@@ -36,4 +36,4 @@ jobs:
           # set FTP_PORT=${{secrets.FTP_PORT}}
           set FTP_USER=${{secrets.FTP_USER}}
           set FTP_PWD=${{secrets.FTP_PWD}}
-          esno ./publish.ts
+          esno ./.build/publish.ts
