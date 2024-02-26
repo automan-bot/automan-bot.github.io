@@ -28,7 +28,7 @@ jobs:
           echo "环境变量：$SSH_HOST"
       - name: 清空ftp服务器目录
         if: env.FTP_SERVER != ''
-        uses: StephanThierry/ftp-delete-action@/v2.1
+        uses: StephanThierry/ftp-delete-action@v2.1
         with:
           host: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_USERNAME }}
