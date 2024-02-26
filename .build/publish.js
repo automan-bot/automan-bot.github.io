@@ -15,6 +15,7 @@ async function example() {
       password: process.env.FTP_PWD,
       secure: false,
     };
+    console.table(mFtpOptions);
     await client.access(mFtpOptions);
     await client.removeDir("/en");
     await client.removeDir("/media");
