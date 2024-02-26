@@ -29,9 +29,9 @@ async function example() {
     await client.cd("/");
     // await client.clearWorkingDir();
     console.log("开始上传");
-    await client.uploadFromDir(resolve("autobot"));
-    await client.uploadFromDir(resolve("autobot_doc"));
-    await client.uploadFromDir(resolve("autojs"));
+    await client.uploadFromDir(resolve("../autobot"));
+    await client.uploadFromDir(resolve("../autobot_doc"));
+    await client.uploadFromDir(resolve("../autojs"));
     console.log(await client.list());
   } catch (err) {
     console.log(err);
