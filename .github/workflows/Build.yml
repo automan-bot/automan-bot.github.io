@@ -33,8 +33,9 @@ jobs:
       - name: 发布内容
         if: env.FTP_HOST != ''
         run: |
-          set FTP_HOST=${{secrets.FTP_HOST}}
-          # set FTP_PORT=${{secrets.FTP_PORT}}
-          set FTP_USER=${{secrets.FTP_USER}}
-          set FTP_PWD=${{secrets.FTP_PWD}}
           node ./.build/publish.js
+        env:
+          FTP_HOST: ${{secrets.FTP_HOST}}
+          FTP_PORT: 21
+          FTP_USER: ${{secrets.FTP_USER}}
+          FTP_PWD: ${{secrets.FTP_PWD}}
