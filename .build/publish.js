@@ -1,5 +1,5 @@
-import * as ftp from "basic-ftp";
-import path from "path";
+const ftp = require("basic-ftp");
+const path = require("path");
 const resolve = (p) => path.resolve(__dirname, p);
 async function example() {
   const client = new ftp.Client();
@@ -10,8 +10,7 @@ async function example() {
   try {
     const mFtpOptions = {
       host: process.env.FTP_HOST,
-      port: ((process.env.FTP_PORT && Number(process.env.FTP_PORT)) ||
-        21) as number,
+      port: (process.env.FTP_PORT && Number(process.env.FTP_PORT)) || 21,
       user: process.env.FTP_USER,
       password: process.env.FTP_PWD,
       secure: false,
