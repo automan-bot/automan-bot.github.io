@@ -28,10 +28,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: 安装依赖
         run: |
-          npm i -g esno@0.16.3 basic-ftp
+          echo "success"
       - name: 发布内容
         if: env.FTP_HOST != ''
         run: |
+          npm i -g esno@0.16.3 basic-ftp
           set FTP_HOST=${{secrets.FTP_HOST}}
           # set FTP_PORT=${{secrets.FTP_PORT}}
           set FTP_USER=${{secrets.FTP_USER}}
