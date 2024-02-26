@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SSH_HOST: ${{ vars.SSH_HOST }}
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
     strategy:
       matrix:
         node-version: [16.x]
@@ -26,13 +26,14 @@ jobs:
       - name: 显示环境变量
         run: |
           echo "环境变量：$SSH_HOST"
-      - name: 登录服务器拉取镜像并运行
-        if: env.SSH_HOST != ''
-        uses: garygrossgarten/github-action-ssh@release
+      - name: 清空ftp服务器目录
+        if: env.FTP_SERVER != ''
+        uses: StephanThierry/ftp-delete-action@v2.1
         with:
-          host: ${{ vars.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          command: |
-            echo "拉取镜像成功"
+          host: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          remoteFiles: "*.html"
+          remoteDirectories: "en;media;static;zh-cn;"
+          workingDir: "/"
+          ignoreSSL: "1"
