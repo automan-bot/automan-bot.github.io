@@ -1,6 +1,15 @@
 const ftp = require("basic-ftp");
 const path = require("path");
 const resolve = (p) => path.resolve(__dirname, p);
+const removeDirs = [
+  "/en",
+  "/media",
+  "/static",
+  "/zh-",
+  "/autobot",
+  "/autobot_doc",
+  "/autojs",
+];
 async function example() {
   const client = new ftp.Client();
   client.ftp.verbose = true;
@@ -19,13 +28,13 @@ async function example() {
     };
     console.table(mFtpOptions);
     await client.access(mFtpOptions);
-    await client.removeDir("/en");
-    await client.removeDir("/media");
-    await client.removeDir("/static");
-    await client.removeDir("/zh-cn");
-    await client.removeDir("/autobot");
-    await client.removeDir("/autobot_doc");
-    await client.removeDir("/autojs");
+    for (let item of removeDirs) {
+      try {
+        await client.removeDir(item);
+      } catch (e) {
+        console.log(e);
+      }
+    }
     console.log("清空后的目录：");
     console.log(await client.list());
     await client.cd("/");
