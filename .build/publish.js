@@ -5,6 +5,11 @@ async function example() {
   const client = new ftp.Client();
   client.ftp.verbose = true;
   try {
+    if (
+      !(process.env.FTP_HOST && process.env.FTP_USER && process.env.FTP_PWD)
+    ) {
+      throw new Error("未设置服务器信息");
+    }
     const mFtpOptions = {
       host: process.env.FTP_HOST,
       port: (process.env.FTP_PORT && Number(process.env.FTP_PORT)) || 21,
@@ -13,9 +18,6 @@ async function example() {
       secure: false,
     };
     console.table(mFtpOptions);
-    if (process.env.FTP_HOST && process.env.FTP_USER && process.env.FTP_PWD) {
-      throw new Error("未设置服务器信息");
-    }
     await client.access(mFtpOptions);
     await client.removeDir("/en");
     await client.removeDir("/media");
