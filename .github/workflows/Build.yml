@@ -15,24 +15,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_HOST: ${{ secrets.FTP_HOST }}
     strategy:
       matrix:
         node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
       - uses: actions/checkout@v2
-      - name: 显示环境变量
-        run: |
-          echo "环境变量：$SSH_HOST"
-      - name: 清空ftp服务器目录
-        if: env.FTP_SERVER != ''
-        uses: StephanThierry/ftp-delete-action@v2.1
+      - name: 初始化 Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          host: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          remoteFiles: "*.html"
-          remoteDirectories: "/en;/media;/static;/zh-cn"
-          workingDir: "/"
-          ignoreSSL: "1"
+          node-version: ${{ matrix.node-version }}
+      - name: 安装依赖
+        run: |
+          npm i
+          npm i -g esno basic-ftp
+      - name: 发布内容
+        if: env.FTP_HOST != ''
+        run: |
+          set FTP_HOST=${{secrets.FTP_HOST}}
+          # set FTP_PORT=${{secrets.FTP_PORT}}
+          set FTP_USER=${{secrets.FTP_USER}}
+          set FTP_PWD=${{secrets.FTP_PWD}}
+          esno ./publish.ts
