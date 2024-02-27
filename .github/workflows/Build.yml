@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       SERVER_HOST: ${{ secrets.SERVER_HOST }}
     steps:
@@ -25,20 +25,15 @@ jobs:
           tar czvf repository.tar.gz autobot autobot_doc autojs
           ls -al
 
-      - name: Copy to server
-        uses: ilCollez/ssh-scp-deploy@v1.3.0
+      - name: Copy single file to remote
+        uses: garygrossgarten/github-action-scp@release
         if: env.SERVER_HOST != ''
         with:
+          local: repository.tar.gz
+          remote: /www/wwwroot/doc.tntok.top
           host: ${{ secrets.SERVER_HOST }}
-          port: ${{ secrets.SERVER_USERNAME }}
-          username: ${{ secrets.SERVER_PASSWORD }}
-          password: ${{ secrets.SERVER_PORT }}
-          files: |
-            autobot
-            autobot_doc
-            autojs
-          remote-path: "/www/wwwroot/doc.tntok.top"
-          clean: true
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
 
       #   uses: appleboy/ssh-action@master
       #   if: env.SERVER_HOST != ''
