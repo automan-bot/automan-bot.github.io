@@ -25,7 +25,7 @@ jobs:
           tar czvf repository.tar.gz autobot autobot_doc autojs
           ls -al
 
-      - name: Copy single file to remote
+      - name: 拷贝文件到远程服务器
         uses: garygrossgarten/github-action-scp@release
         if: env.SERVER_HOST != ''
         with:
