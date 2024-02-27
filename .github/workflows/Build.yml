@@ -26,14 +26,15 @@ jobs:
           ls -al
 
       - name: 拷贝文件到远程服务器
-        uses: garygrossgarten/github-action-scp@release
+        uses: lengxing-lx/scp-remote-action@v1.1
         if: env.SERVER_HOST != ''
         with:
-          local: repository.tar.gz
-          remote: /www/wwwroot/doc.tntok.top/
-          host: ${{ secrets.SERVER_HOST }}
+          ipaddr: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
+          operation_type: upload
+          operation_list: |
+            file repository.tar.gz /www/wwwroot/doc.tntok.top
 
       #   uses: appleboy/ssh-action@master
       #   if: env.SERVER_HOST != ''
