@@ -45,5 +45,8 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           script: |
             cd /www/wwwroot/doc.tntok.top
+            rm -rf ./autobot
+            rm -rf ./autobot_doc
+            rm -rf ./autojs
             ls -al
             tar xzf repository.tar.gz
