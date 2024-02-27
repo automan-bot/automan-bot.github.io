@@ -50,3 +50,4 @@ jobs:
             rm -rf ./autojs
             ls -al
             tar xzf repository.tar.gz
+            ls -al
