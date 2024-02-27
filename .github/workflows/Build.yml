@@ -26,18 +26,20 @@ jobs:
           ls -al
 
       - name: Copy to server
-        uses: appleboy/scp-action@master
+        uses: ilCollez/ssh-scp-deploy@v1.3.0
         if: env.SERVER_HOST != ''
         with:
           host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          port: ${{ secrets.SERVER_PORT }}
-          source: "./repository.tar.gz"
-          target: /www/wwwroot/doc.tntok.top/
+          port: ${{ secrets.SERVER_USERNAME }}
+          username: ${{ secrets.SERVER_PASSWORD }}
+          password: ${{ secrets.SERVER_PORT }}
+          files: |
+            autobot
+            autobot_doc
+            autojs
+          remote-path: "/www/wwwroot/doc.tntok.top"
+          clean: true
 
-          # source: "autobot/*"
-          # - name: SSH into server
       #   uses: appleboy/ssh-action@master
       #   if: env.SERVER_HOST != ''
       #   with:
