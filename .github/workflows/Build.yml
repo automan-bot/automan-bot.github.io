@@ -22,7 +22,7 @@ jobs:
 
       - name: Archive repository
         run: |
-          tar czvf repository.tar.gz autobot autobot_doc autojs
+          tar czvf repository.tar.gz autobot autobot_doc autojs index.html
           ls -al
 
       - name: 拷贝文件到远程服务器
