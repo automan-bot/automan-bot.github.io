@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
-          source: "./autobot/*,./autobot_doc/*,./autojs/*"
+          source: "autobot/*"
           target: /www/wwwroot/doc.tntok.top
 
           # source: "repository.tar.gz"
