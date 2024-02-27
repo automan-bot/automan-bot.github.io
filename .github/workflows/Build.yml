@@ -35,7 +35,7 @@ jobs:
           operation_type: upload
           operation_list: |
             file repository.tar.gz /www/wwwroot/doc.tntok.top
-      - name: 拷贝文件到远程服务器
+      - name: 登录到目标服务器解压部署
         uses: appleboy/ssh-action@master
         if: env.SERVER_HOST != ''
         with:
