@@ -34,7 +34,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           operation_type: upload
           operation_list: |
-            file repository.tar.gz /www/wwwroot/doc.tntok.top
+            file repository.tar.gz /www/wwwroot/mobile.tntok.top
       - name: 登录到目标服务器解压部署
         uses: appleboy/ssh-action@master
         if: env.SERVER_HOST != ''
@@ -44,7 +44,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd /www/wwwroot/doc.tntok.top
+            cd /www/wwwroot/mobile.tntok.top
             rm -rf ./autobot
             rm -rf ./autobot_doc
             rm -rf ./autojs
