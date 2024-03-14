@@ -69,3 +69,9 @@ jobs:
           ls -l
           # 清空仓库
           git rm -rf .
+          # 解压压缩文件当私有仓库
+          tar xzf ../repository.tar.gz .
+          # 提交代码到私有仓库
+          git add .
+          git commit -m "Sync changes from public repository"
+          git push
