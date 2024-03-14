@@ -53,7 +53,7 @@ jobs:
             tar xzf repository.tar.gz
             ls -al
 
-      - name: SyncGitee
+      - name: 同步仓库到gitee
         if: env.SSH_PRIVATE_KEY != ''
         run: |
           # 同步sshkey以访问私有仓库
