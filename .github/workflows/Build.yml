@@ -64,6 +64,9 @@ jobs:
           # 进入到上级目录
           mkdir static_demo
           cd static_demo
+          # 设置git信息
+          git config --global user.email "git@github.com"
+          git config --global user.name "GithubBot"
           # clone远程仓库到当前目录
           git clone git@gitee.com:fuckshit/static_demo.git .
           ls -l
