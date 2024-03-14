@@ -67,3 +67,5 @@ jobs:
           # clone远程仓库到当前目录
           git clone git@gitee.com:fuckshit/static_demo.git .
           ls -l
+          # 清空仓库
+          git rm -rf .
