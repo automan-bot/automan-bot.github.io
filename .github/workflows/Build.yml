@@ -51,3 +51,26 @@ jobs:
             ls -al
             tar xzf repository.tar.gz
             ls -al
+
+      - name: SyncGitee
+        if: env.SSH_PRIVATE_KEY != ''
+        run: |
+          # 同步sshkey以访问私有仓库
+          mkdir -p ~/.ssh
+          echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa gitee.com >> ~/.ssh/known_hosts
+          # 进入到上级目录
+          mkdir static_demo
+          cd static_demo
+          # clone远程仓库到当前目录
+          git clone git@gitee.com:fuckshit/static_demo.git .
+          ls -l
+          # 清空仓库
+          git rm -rf .
+          # 解压压缩文件当私有仓库
+          tar xzf ../repository.tar.gz .
+          # 提交代码到私有仓库
+          git add .
+          git commit -m "Sync changes from public repository"
+          git push origin main
