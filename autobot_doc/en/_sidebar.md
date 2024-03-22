@@ -7,5 +7,7 @@
 - [Software Update Log](./changeLog)
 - Related Resources
   - [Android-Bot](https://www.npmjs.com/package/android-bot ":target=_blank")
+  - [Tntok Mirror](https://www.tntok.top ":target=_blank")
+  - [AutoJS PC](https://mobile.tntok.top/autojs ":target=_blank")
   - [ADB Usage](https://github.com/mzlogin/awesome-adb ":target=_blank")
 - [About](./about)

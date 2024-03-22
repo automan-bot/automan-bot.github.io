@@ -1,16 +1,12 @@
-## Welcome page - Description：```txtYou can determine whether the server is connected``` - Request URL：`http://[ip]:18080/api/hello` - Request Method：`GET` - Request Parameters：    - none - Response example：```jsonhello```## Gets the current device ID - Description：```txtObtain the device ID``` - Request URL：`http://[ip]:18080/api/getDeviceId` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+## Welcome page - Description：```txtYou can determine whether the server is connected``` - Request URL：`http://[ip]:18080/api/hello` - Request Method：`GET` - Request Parameters：    - none - Response example：```jsonhello```## Obtain the current device ID - Description：```txtObtain the device ID``` - Request URL：`http://[ip]:18080/api/getDeviceId` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "xxxx-xxxx-xxxx-xxxx"
-}```## Check whether you can listen for notifications - Description：```txt- Check if this device can listen for notifications, and if so, you can use websockets to listen for android's real-time notifications
-- Real-time notifications require Android version 9.0 and above``` - Request URL：`http://[ip]:18080/api/checkNotification` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
-	"code": 1,
-	"data": "1"
-}```## Obtain the current device IP - Description：```txtObtain all IP addresses on the corresponding device``` - Request URL：`http://[ip]:18080/api/getIp` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Obtain the IP address of the current device - Description：```txtObtain all IP addresses on the device``` - Request URL：`http://[ip]:18080/api/getIp` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": [
 		"192.168.1.100"
 	]
-}```## Gets the version number - Request URL：`http://[ip]:18080/api/version` - Request Method：`GET` - Request Parameters：    - none - Response example：```json12403```## Get screen information - Description：```txtCan be used to return the screen orientation, width, and height of the device``` - Request URL：`http://[ip]:18080/api/screenInfo` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Obtain the version number - Request URL：`http://[ip]:18080/api/version` - Request Method：`GET` - Request Parameters：    - none - Response example：```json12403```## Get screen information - Description：```txtCan be used to return the screen orientation, width, and height of the device``` - Request URL：`http://[ip]:18080/api/screenInfo` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": {
 		"rotation": 0,
@@ -63,19 +59,19 @@
 			"imei": "xxxxxxxxxx",
 			"deviceId": "xxxxxxxxxx"
 		}
-	}```## Screenshot - Description：```txtThis API can directly request and return a real-time screenshot of the screen``` - Request URL：`http://[ip]:18080/api/screenShot` - Request Method：`GET` - Request Parameters：    - none - Response example：    - none## Screenshot base64 - Description：```txtReturns the screenshot as a base64 string``` - Request URL：`http://[ip]:18080/api/screenShotBase64` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+	}```## Screenshots - Description：```txtThis API can be directly requested to return a real-time screenshot of the screen``` - Request URL：`http://[ip]:18080/api/screenShot` - Request Method：`GET` - Request Parameters：    - none - Response example：    - none## Screenshot base64 - Description：```txtReturns the screenshot as a base64 string``` - Request URL：`http://[ip]:18080/api/screenShotBase64` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "data:image/jpeg;base64,/9j/xxxxxxxxx"
-}```## Gets the screen orientation - Description：```txt- 0: Indicates vertical orientation (vertical up), usually portrait mode.
-- 1: Represents 90 degrees counterclockwise rotation, landscape mode, the top of the screen is on the right side.
-- 2: Represents a 180-degree rotation, usually in upside-down mode, with the top of the screen at the bottom.
-- 3: Represents a 90-degree clockwise rotation, landscape mode, with the top of the screen on the left.``` - Request URL：`http://[ip]:18080/api/screenRotation` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Get screen orientation - Description：```txt- 0: Indicates the vertical direction (vertical up), usually in portrait mode.
+- 1: Indicates a 90-degree counterclockwise rotation in landscape mode, with the top of the screen on the right.
+- 2: Rotates 180 degrees, usually in upside-down mode, with the top of the screen at the bottom.
+- 3: Indicates a 90-degree clockwise rotation in landscape mode, with the top of the screen on the left.``` - Request URL：`http://[ip]:18080/api/screenRotation` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "0"
 }```## Screen tree XML - Description：```txtReturns the layout information of the current screen in XML format``` - Request URL：`http://[ip]:18080/api/screenXml` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "<?xml version='1.0' encoding='UTF-8' standalone='yes' ?><node index=\"4\" class=\"android.widget.FrameLayout\" clickable=\"false\" visibleToUser=\"true\" enabled=\"true\" resourceId=\"com.miui.aod:id/aod_mode_layout_horizontal\" text=\"\" bound=\"0,0,1080,2340\"><node index=\"5\" class=\"android.view.View\" clickable=\"false\" visibleToUser=\"true\" enabled=\"true\" resourceId=\"com.miui.aod:id/notification_animation_view\" text=\"\" bound=\"0,0,1080,2340\" /></node>"
-}```## Screen tree JSON - Description：```txtReturns the layout information of the current screen in JSON format``` - Request URL：`http://[ip]:18080/api/screenJson` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Screen tree json - Description：```txtReturns the layout information of the current screen in JSON format``` - Request URL：`http://[ip]:18080/api/screenJson` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": {
 		"index": 6,
@@ -89,7 +85,7 @@
 		"bound": "0,0,1080,2340",
 		"children": []
 	}
-}```## Get all contacts - Request URL：`http://[ip]:18080/api/getAllContact` - Request Method：`GET` - Request Parameters：    - number：`13312341234` (Get all contacts when you don't pass or pass *, otherwise get the contact corresponding to this number) - Response example：```json{
+}```## Get all your contacts - Request URL：`http://[ip]:18080/api/getAllContact` - Request Method：`GET` - Request Parameters：    - number：`*` (Get all contacts when you don't pass or pass *, otherwise get the contacts corresponding to this number) - Response example：```json{
 	"code": 1,
 	"data": [
 		{
@@ -98,16 +94,16 @@
 			"id": "2963r40-733F6CA69304"
 		}
 	]
-}```## Delete a contact - Description：```txtIf the code is 1, the deletion is successful
-The data field returns the number of successful deletions
-Call this interface with caution``` - Request URL：`http://[ip]:18080/api/deleteContact` - Request Method：`GET` - Request Parameters：    - number：`13312341234` (Delete all contacts when not uploading or sending *, otherwise delete the contact corresponding to this number) - Response example：```json{
+}```## Delete the contact - Description：```txtIf the code is set to 1, the deletion is successful
+The data field returns the number of deleted data
+Call this API with caution``` - Request URL：`http://[ip]:18080/api/deleteContact` - Request Method：`GET` - Request Parameters：    - number：`13312341246` (Delete all contacts when you don't pass or pass *, otherwise delete the contacts corresponding to this number) - Response example：```json{
 	"code": 1,
 	"data": "0"
-}```## Insert a contact - Description：```txtA data value of 1 indicates that the insertion is successful``` - Request URL：`http://[ip]:18080/api/insertContact` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"name":"李四","number":"13312341246"}  ``` - Response example：```json{
+}```## Insert a contact - Description：```txtIf the data value is 1, the insertion is successful``` - Request URL：`http://[ip]:18080/api/insertContact` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"name":"李四","number":"13312341246"}  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Get all text messages - Description：```txtIf the number of SMS messages is too large, this interface will be slow;
-It is recommended to send a mobile phone number to obtain SMS messages from a specified number, and to clean up SMS messages regularly``` - Request URL：`http://[ip]:18080/api/getAllSms` - Request Method：`GET` - Request Parameters：    - number：`10010` (Get all SMS messages when not transmitting or sending *, otherwise get SMS messages of the corresponding number) - Response example：```json{
+}```## Get all your text messages - Description：```txtIf the number of SMS messages is too large, this API will be slow.
+It is recommended to send the mobile phone number to get the SMS of the specified number, and to clean the SMS regularly``` - Request URL：`http://[ip]:18080/api/getAllSms` - Request Method：`GET` - Request Parameters：    - number：`10010` (Get all SMS when you don't send or pass *, otherwise get SMS for the corresponding number) - Response example：```json{
 	"code": 1,
 	"data": [
 		{
@@ -121,43 +117,70 @@ It is recommended to send a mobile phone number to obtain SMS messages from a sp
 			"type": 1
 		}
     ]
-}```## Delete text messages - Description：```txtDue to the limitations of the Android system, SMS must be deleted through the SMS app, so this interface is not applicable``` - Request URL：`http://[ip]:18080/api/deleteSms` - Request Method：`GET` - Request Parameters：    - number：`10010`  - Response example：    - none## Analog keys - Description：```txtvalue stands for keyCode
-To query the corresponding keyCode, please refer to the adb usage documentation
-You can also refer to the Android SDK's KeyEvent .java class``` - Request URL：`http://[ip]:18080/api/pressKeyCode` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":4}  ``` - Response example：```json{
+}```## Simulate clicks - Description：```txtx,y supports absolute coordinates, for example, x=300 and y=500
+x,y support percentage, for example, pass x=0.5,y=0.5, then this point is the middle of the screen``` - Request URL：`http://[ip]:18080/api/click` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"x":0.5,"y":0.5}  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## One-finger gesture - Description：```txtduration represents the length of time this gesture is performed, in milliseconds
-Points are the sampling path of the gesture, and the more points, the smoother the gesture``` - Request URL：`http://[ip]:18080/api/gesture` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
+}```## Simulate a long press to click - Description：```txtx,y supports absolute coordinates, for example, x=300 and y=500
+x,y support percentage, for example, pass x=0.5,y=0.5, then this point is the middle of the screen``` - Request URL：`http://[ip]:18080/api/longClick` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"x":0.5,"y":0.5}  ``` - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Simulate a long press tap (specified time) - Description：```txtPerform a long press at the x,y coordinates of the screen for a duration of milliseconds
+x,y supports absolute coordinates, for example, x=300 and y=500
+x,y support percentage, for example, pass x=0.5,y=0.5, then this point is the middle of the screen
+duration, in milliseconds (ms)``` - Request URL：`http://[ip]:18080/api/press` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"x":0.5,"y":0.8,"duration":1000}  ``` - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Simulate sliding - Description：```txtSwipe from x1,y1 to x2,y2 in milliseconds from the duration of the screen
+x1, y1, x2, y2 support percentage coordinates and absolute coordinates, you can refer to the simulated click
+duration, in milliseconds (ms)``` - Request URL：`http://[ip]:18080/api/swipe` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"x1":0.2,"y1":0.8,"x2":0.2,"y2":0.2,"duration":500}  ``` - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Emulate keystrokes - Description：```txtvalue represents the keyCode
+For details about how to query the corresponding keyCode, see the adb usage document
+You can also refer to the KeyEvent.java class of the Android SDK``` - Request URL：`http://[ip]:18080/api/pressKeyCode` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":4}  ``` - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## One-finger gestures - Description：```txtduration represents the execution duration of the gesture, in milliseconds
+points is the sampling path of the gesture, and the more points there are, the smoother the gesture will be``` - Request URL：`http://[ip]:18080/api/gesture` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
 	"duration":200,
 	"points":[{"x":168,"y":558},{"x":172,"y":562},{"x":276,"y":562},{"x":306,"y":560},{"x":348,"y":552},{"x":390,"y":548},{"x":442,"y":540},{"x":470,"y":540},{"x":500,"y":538},{"x":520,"y":538},{"x":548,"y":538},{"x":566,"y":538},{"x":596,"y":540}]
 }  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Multi-finger gestures - Description：```txtA multi-finger gesture is a collection of multiple single-finger gestures
-delay represents this gesture, how many milliseconds after this set of multi-fingered gestures starts executing
-deduration represents the length of time this gesture is performed, in milliseconds
-Points are the sampling path of the gesture, and the more points, the smoother the gesture``` - Request URL：`http://[ip]:18080/api/gestures` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json[{
+}```## Multi-finger gestures - Description：```txtA multi-finger gesture is a collection of multiple one-finger gestures
+delay represents the number of milliseconds after the execution of this group of multi-finger gestures starts to be delayed
+deduration represents the execution duration of the gesture, in milliseconds
+points is the sampling path of the gesture, and the more points there are, the smoother the gesture will be``` - Request URL：`http://[ip]:18080/api/gestures` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json[{
 	"delay":0,
 	"duration":200,
 	"points":[{"x":168,"y":558},{"x":172,"y":562},{"x":276,"y":562},{"x":306,"y":560},{"x":348,"y":552},{"x":390,"y":548},{"x":442,"y":540},{"x":470,"y":540},{"x":500,"y":538},{"x":520,"y":538},{"x":548,"y":538},{"x":566,"y":538},{"x":596,"y":540}]
 }]  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Enter characters - Description：```txtThe input characters only support ACSII codes, and they are entered by pressing the key to emulate
-There are some specific situations where you can't try this API if you can't enter by entering a string``` - Request URL：`http://[ip]:18080/api/inputChar` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":"hello world"}  ``` - Response example：```json{
+}```## Enter characters - Description：```txtThe input characters only support ACSII codes and are entered by means of key simulation
+In some specific cases, you can try this API if you can't enter a string``` - Request URL：`http://[ip]:18080/api/inputChar` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":"hello world"}  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Enter a string - Description：```txtEnter a string that supports multiple languages``` - Request URL：`http://[ip]:18080/api/inputText` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":"哈哈"}  ``` - Response example：```json{
+}```## Enter a string - Description：```txtInput strings, support multiple languages``` - Request URL：`http://[ip]:18080/api/inputText` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":"哈哈"}  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## List folders - Description：```txtThe incoming pair directory lists the contents under the corresponding file:
-isExecute: Whether executable or not
+}```## Sets the clipboard contents - Description：```txtSets the clipboard contents``` - Request URL：`http://[ip]:18080/api/setClipText` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
+    "value":"hello world"
+}  ``` - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Get clipboard data - Description：```txtRead the contents of your phone's clipboard``` - Request URL：`http://[ip]:18080/api/getClipText` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+	"code": 1,
+	"data": "hello"
+}```## List the folders - Description：```txtThe incoming pair directory lists the contents of the corresponding file:
+isExecute: whether it can be executed
 isFile: Whether it is a file, otherwise it is a folder
-isRead: Whether it is readable or not
-isWrite: Whether it is writable or not
-lastModified: The last modified time
-name: The name of the file
-path: The path where the file is located``` - Request URL：`http://[ip]:18080/api/listFile` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
+isRead: whether it is readable
+isWrite: whether it is writable
+lastModified: the time when it was last modified
+name: the name of the file
+path: the path where the file is located``` - Request URL：`http://[ip]:18080/api/listFile` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
     "value": "/sdcard"
 }  ``` - Response example：```json{
 	"code": 1,
@@ -174,38 +197,42 @@ path: The path where the file is located``` - Request URL：`http://[ip]:1808
 		},
         "...."
     ]
-}```## Upload the file - Description：```txt- Please use form-data to upload files, and path can specify the specific upload directory
-- After successful upload, the file path after successful upload will be returned
-- Note that the upload file must be uploaded in the /sdcard/ directory``` - Request URL：`http://[ip]:18080/api/upload` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：    - none - Response example：```json{
+}```## Upload the file - Description：```txt- To upload a file, use form-data to submit the file, and the path can specify the specific directory to be uploaded
+- After the upload is successful, the file path is returned
+- Note that the uploaded file must be in the /sdcard/ directory``` - Request URL：`http://[ip]:18080/api/upload` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "/sdcard/screen.mp4"
 }```## Download the file - Description：```txt- The path parameter is the path of the file to be downloaded
-- It is recommended that the path parameters be encoded with encodeURIComponent before being concatenated
-- Prevents the path from containing special characters causing the download to fail``` - Request URL：`http://[ip]:18080/api/download` - Request Method：`GET` - Request Parameters：    - path：`/sdcard/tsconfig.json`  - Response example：    - none## Delete the folder - Description：```txtAll contents of folders and subdirectories will be deleted, so call this interface with caution``` - Request URL：`http://[ip]:18080/api/delFile` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
+- It is recommended that the path parameters be encoded with encodeURIComponent and then concatenated
+- Prevent the path from containing special characters that cause the download to fail``` - Request URL：`http://[ip]:18080/api/download` - Request Method：`GET` - Request Parameters：    - path：`/sdcard/tsconfig.json`  - Response example：    - none## Delete the folder - Description：```txtAll contents of folders and subdirectories will be deleted, so call this API with caution``` - Request URL：`http://[ip]:18080/api/delFile` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
     "value":"/sdcard/tmp"
 }  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Execute shell commands - Description：```txtTo execute shell commands, you can use \nto execute multiple shell commands, and all execution results will be returned within one return``` - Request URL：`http://[ip]:18080/api/execCmd` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
+}```## Execute shell commands - Description：```txtTo execute shell commands, you can execute multiple shell commands with \n, and all the execution results will be returned in one return``` - Request URL：`http://[ip]:18080/api/execCmd` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
     "timeout":1,
-    "value":"pm list packages \n input keyevent 26"
+    "value":"reboot"
 }  ``` - Response example：```json{
 	"code": 1,
 	"data": "package:com.android.updater\n..."
-}```## Sets the current device name - Description：```txtSet the name of the device, note that this does not change the system name of the device
-In order to allow you to better distinguish devices when you have multiple devices during development``` - Request URL：`http://[ip]:18080/api/setDisplayName` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":"设备001"}  ``` - Response example：```json{
+}```## Set the current device name - Description：```txtSet the name of the device, note that this does not change the system name of the device
+In order to allow you to better distinguish between devices when you have multiple devices during development``` - Request URL：`http://[ip]:18080/api/setDisplayName` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":"设备001"}  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Gets the current device name - Description：```txt- Get the name of the device you set through the interface
-- Note that this interface is not to get the device name of your real one
-- Instead, when you have multiple devices, differentiate the devices by setting different names on them``` - Request URL：`http://[ip]:18080/api/getDisplayName` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Clear the text in the input box - Description：```txtThe input characters only support ACSII codes and are entered by means of key simulation
+In some specific cases, you can try this API if you can't enter a string``` - Request URL：`http://[ip]:18080/api/clearText` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Obtain the current device name - Description：```txt- Get the name of the device you set through the interface
+- Note that this interface is not intended to get your real device name
+- Instead, when you have multiple devices, distinguish them by setting different names for them``` - Request URL：`http://[ip]:18080/api/getDisplayName` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "设备001"
-}```## Get top-level activity information - Description：```txt- Get the information of the page at the front of the current mobile phone screen (including the application information)
-- packageName: The package name
-- className: The class name of the current top-level activity
-- main: The startup class of the current package name (boot entry)
-- For example, if we open Chrome, it will return the information corresponding to Chrome``` - Request URL：`http://[ip]:18080/api/getTopActivity` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Obtain top-level activity information - Description：```txt- Get the information about the page at the top of the current phone screen (including the application information it belongs to)
+- packageName: the name of the package
+- className: the class name of the current top-level activity
+- main: the startup class of the current package name (startup entry)
+- For example, when we open chrome, we will return the information corresponding to chrome``` - Request URL：`http://[ip]:18080/api/getTopActivity` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": {
 		"shortClassName": "org.chromium.chrome.browser.ChromeTabbedActivity",
@@ -213,20 +240,20 @@ In order to allow you to better distinguish devices when you have multiple devic
 		"main": "com.google.android.apps.chrome.Main",
 		"packageName": "com.android.chrome"
 	}
-}```## Gets the startup class based on the package name - Description：```txtGets the startup class based on the package name``` - Request URL：`http://[ip]:18080/api/getStartActivity` - Request Method：`GET` - Request Parameters：    - packageName：`com.android.chrome` (Package name) - Response example：```json{
+}```## Get the startup class based on the package name - Description：```txtGet the startup class based on the package name``` - Request URL：`http://[ip]:18080/api/getStartActivity` - Request Method：`GET` - Request Parameters：    - packageName：`com.android.chrome` (包名) - Response example：```json{
 	"code": 1,
 	"data": "com.google.android.apps.chrome.Main"
-}```## Launch the app based on the package name - Description：```txtStart an application based on the package name, which must have an entry to be started
+}```## Launch the app based on the package name - Description：```txtLaunch the application based on the package name, which must have an entry before it can be launched
 <intent-filter>
    <action android:name="android.intent.action.MAIN"/>
    <category android:name="android.intent.category.LAUNCHER"/>
-</intent-filter>``` - Request URL：`http://[ip]:18080/api/startPackage` - Request Method：`GET` - Request Parameters：    - packageName：`com.android.chrome` (Package name) - Response example：```json{
+</intent-filter>``` - Request URL：`http://[ip]:18080/api/startPackage` - Request Method：`GET` - Request Parameters：    - packageName：`com.android.chrome` (包名) - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Stop the app based on the package name - Request URL：`http://[ip]:18080/api/stopPackage` - Request Method：`GET` - Request Parameters：    - packageName：`com.android.chrome` (Package name) - Response example：    - none## Clear app data based on package name - Description：```txtNote: Use caution when this method clears the app's data and is not recoverable``` - Request URL：`http://[ip]:18080/api/clearPackage` - Request Method：`GET` - Request Parameters：    - packageName：`com.android.chrome` (Package name) - Response example：```json{
+}```## Stop the app based on the package name - Request URL：`http://[ip]:18080/api/stopPackage` - Request Method：`GET` - Request Parameters：    - packageName：`com.android.chrome` (包名) - Response example：    - none## Clear app data based on package name - Description：```txtNote: This method erases the app's data and is not recoverable, so use it with caution``` - Request URL：`http://[ip]:18080/api/clearPackage` - Request Method：`GET` - Request Parameters：    - packageName：`com.android.chrome` (包名) - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Get a list of all apps - Description：```txtGet all app package names``` - Request URL：`http://[ip]:18080/api/getAllPackage` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Get a list of all apps - Description：```txtGet all the app package names``` - Request URL：`http://[ip]:18080/api/getAllPackage` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": [
 		"com.google.android.dialer",
@@ -270,33 +297,46 @@ In order to allow you to better distinguish devices when you have multiple devic
 		],
 		"singnatures": ""
 	}
-}```## Play Music (Network Music) - Description：```txtCall the device to play a sound (Note: This interface may fail in Android 10 and below systems), please use it with caution``` - Request URL：`http://[ip]:18080/api/playMusic` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":"https://www.runoob.com/try/demo_source/horse.ogg"}  ``` - Response example：```json{
+}```## Play music (web music) - Description：```txtCall the device to play a sound (Note: This interface may fail in the system below Android 10), please use it with caution``` - Request URL：`http://[ip]:18080/api/playMusic` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":"https://www.runoob.com/try/demo_source/horse.ogg"}  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Stop playing music - Description：```txtWhen you use the function of playing network music, this interface can immediately customize the playback``` - Request URL：`http://[ip]:18080/api/stopMusic` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Stop playing music - Description：```txtWhen you use the function of playing network music, this interface can be customized for immediate playback``` - Request URL：`http://[ip]:18080/api/stopMusic` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Clean up the notification bar feature - Description：```txtDue to Android's security restrictions, higher versions of Android have been unable to invoke the function of cleaning up the notification bar``` - Request URL：`http://[ip]:18080/api/cancelAllNotifications` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Dial number - Description：```txtDirectly use the corresponding number to initiate the function of making a call, and only support the main card to dial``` - Request URL：`http://[ip]:18080/api/callPhone` - Request Method：`GET` - Request Parameters：    - number：`10010`  - Response example：    - none## Hang up - Description：```txtHang up the call that is being made``` - Request URL：`http://[ip]:18080/api/endCall` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Dial number - Description：```txtDirectly use the corresponding number to initiate the call function, only the main card dialing is supported``` - Request URL：`http://[ip]:18080/api/callPhone` - Request Method：`GET` - Request Parameters：    - number：`10010`  - Response example：    - none## Hang up - Description：```txtHang up the call that is being made``` - Request URL：`http://[ip]:18080/api/endCall` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
-	"code": 1,
-	"data": "1"
-}```## Send SMS - Description：```txtDue to the security restrictions of the Android system, if you cannot send SMS, you will usually be redirected to the send page``` - Request URL：`http://[ip]:18080/api/sendSms` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
+}```## Send a text message - Description：```txtDue to the security limitations of the Android system, if you cannot send SMS, you will usually be redirected to the sending page``` - Request URL：`http://[ip]:18080/api/sendSms` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
     "phoneNumber":"13312341234",
     "value":"hello world"
-}  ``` - Response example：    - none## Screen-off control - Description：```txtThis is not a lock screen, but so that the screen is in the off state, and the screen projection and control can be used normally.
-To recover, send the power button and your phone will light up again.``` - Request URL：`http://[ip]:18080/api/turnScreenOff` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}  ``` - Response example：    - none## Screen-off control - Description：```txtThis is not a lock screen, but to keep the screen in a screen-off state, and the projection and control can be used normally.
+To restore, call the screen off or send the power button or press the phone's power button, and the phone will turn on again.``` - Request URL：`http://[ip]:18080/api/turnScreenOff` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Get clipboard data - Description：```txtRead your phone's clipboard data``` - Request URL：`http://[ip]:18080/api/getClipText` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
-	"code": 1,
-	"data": "hello"
-}```## Start screen recording - Description：```txtThis interface will start the screen recording program in the background of the device, limit represents the longest recording time (in order to prevent the user from forgetting to stop after opening screen recording, resulting in the phone storage full, Android's own screen recording time is 180s by default, more than 180s will be automatically aborted), you can modify this parameter to achieve longer screen recording.
-If you need to customize in the middle of the process, you can call the end screen recording interface, and the storage location of the screen recording is '/sdcard/screen.mp4'``` - Request URL：`http://[ip]:18080/api/startRecoreScreen` - Request Method：`GET` - Request Parameters：    - limit：`180` (Screen recording limit duration, in seconds) - Response example：```json{
+}```## Turn the screen off and on - Description：```txtIf the phone is locked by pressing the power button, it will simulate the execution of the power button to make the device screen on``` - Request URL：`http://[ip]:18080/api/turnScreenOn` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## End screen recording - Description：```txtThis API is used for screen recording tasks after the end of the stage, and the default save path of the screen recording file is '/sdcard/screen.mp4'``` - Request URL：`http://[ip]:18080/api/stopRecoreScreen` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Start the screen recording - Description：```txtThis interface will start the screen recording program in the background of the device, limit represents the maximum recording duration (in order to prevent users from forgetting to stop after turning on the screen recording, causing the phone storage to be full, the default screen recording time of Android is 180s, and it will automatically abort if it exceeds 180s), you can modify this parameter to achieve a longer screen recording.
+If you need to customize in the middle of the process, you can call the end screen recording API, and the storage location of the screen recording is '/sdcard/screen.mp4'``` - Request URL：`http://[ip]:18080/api/startRecoreScreen` - Request Method：`GET` - Request Parameters：    - limit：`180` (The recording duration is limited in seconds) - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Exit Service - Description：```txtCalling this API will terminate the autobot's service, and if you need to re-enable the service, you need to reactivate the server``` - Request URL：`http://[ip]:18080/api/exit` - Request Method：`GET` - Request Parameters：    - none - Response example：    - none
+}```## End the screen recording - Description：```txtThis API is used to end the end-end screen recording task, and the default path of the screen recording file is /sdcard/screen.mp4``` - Request URL：`http://[ip]:18080/api/stopRecoreScreen` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Execute AutoX.js script - Description：```txtaction: Just pass exec by default
+script: The content of the script to run
+delay: The number of milliseconds for delayed execution, default is 0
+interval: The time interval between two runs when the loop is running, defaults to 0
+loopTimes: the number of times the loop runs, which is 1 by default. 0 is an infinite loop.``` - Request URL：`http://[ip]:18080/api/execScript` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
+    "action":"exec",
+    "script":"console.show(true);console.log(`hello world`);",
+    "delay":0,
+    "interval":3000,
+    "loopTimes":2
+}  ``` - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Quit all AutoX.js scripts - Description：```txtStop all running scripts.``` - Request URL：`http://[ip]:18080/api/stopAllScript` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Opting Out of Service - Description：```txtCalling this API will terminate the service of Autobot, and if you need to re-enable the service, you need to re-activate the server``` - Request URL：`http://[ip]:18080/api/exit` - Request Method：`GET` - Request Parameters：    - none - Response example：    - none

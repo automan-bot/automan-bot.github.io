@@ -6,6 +6,8 @@
 - [常见问题](./faq)
 - [软件更新日志](./changeLog)
 - 相关资源
-  - [AndroidBot](http://npmjs.org ":target=_blank")
+  - [AndroidBot](https://www.npmjs.com/package/android-bot ":target=_blank")
+  - [Tntok 投屏](https://www.tntok.top ":target=_blank")
+  - [AutoJS PC 版](https://mobile.tntok.top/autojs ":target=_blank")
   - [ADB 用法](https://github.com/mzlogin/awesome-adb ":target=_blank")
 - [关于](./about)
