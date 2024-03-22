@@ -19,5 +19,4 @@
   - [jquery 语法](https://jquery.cuishifeng.cn/attributeEquals.html)
   - [NodeJS 文档](https://nodejs.org/dist/latest-v16.x/docs/api/)
   - [阮一峰 ES6 入门](https://es6.ruanyifeng.com/)
-- [用户协议](/license)
 - [关于](/about)

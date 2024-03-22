@@ -4,7 +4,7 @@
 
 ## 1.下载并安装「AutoJS PC」windows 端程序
 
-- [点击下载最新版本的 AutoJSPC 程序](http://www.tntok.top/download/autojs/AutoJS_Setup_latest.exe ":target=_blank")
+- [点击下载最新版本的 AutoJSPC 程序](/download ":target=_blank")
 
 ## 2.注册账户
 

@@ -349,15 +349,15 @@ await killApp(topApp.packageName);
 ```js
 const path = require("path");
 const util = require("util");
-const copyFile = util.promisify(require("fs").copyFile);
+const writeFileSync = util.promisify(require("fs").writeFileSync);
 const outputDir = "D:/";
 async function main() {
   try {
-    let xmlPath = await getScreenXml2();
+    let xmlStr = await getScreenXml2();
     const xmlOutputPath = path.join(outputDir, "ui.xml");
     console.log("xmlsrcPath:" + xmlPath);
     console.log("xmloutPath:" + xmlOutputPath);
-    await copyFile(xmlPath, xmlOutputPath);
+    writeFileSync(xmlOutputPath, xmlStr, "utf8");
     console.log("导出成功");
   } catch (e) {
     console.log(e.stack);
