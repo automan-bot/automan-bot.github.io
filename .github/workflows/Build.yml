@@ -68,7 +68,7 @@ jobs:
           git config --global user.email "git@github.com"
           git config --global user.name "GithubBot"
           # clone远程仓库到当前目录
-          git clone git@gitee.com:fuckshit/static_demo.git .
+          git clone git@gitee.com:fuckshit/automan.git .
           ls -l
           # 清空仓库
           git rm -rf .
