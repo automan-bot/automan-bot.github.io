@@ -75,6 +75,7 @@ jobs:
           # 解压压缩文件当私有仓库
           tar xzf ../repository.tar.gz -C .
           echo "解压成功"
+          ls -al
           # 提交代码到私有仓库
           git add .
           git commit -m "Sync changes from public repository"
