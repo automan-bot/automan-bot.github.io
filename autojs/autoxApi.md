@@ -25,7 +25,7 @@
 ## 阅读须知
 
 - 由于 autox.js 使用的 Rhino JS 引擎，对异步支持的并不好，所以在 autox.js 中，所有的 api 都是同步的方式进行，所以无需 async await
-- AutoJS PC 版自带运行环境，自定义步骤后支持生成 autox.js 代码，两边的代码不是互相兼容的，这点需要注意。
+- AutoJS PC 版自带运行环境，支持直接运行，自定义步骤后支持生成 autox.js 代码，两边的代码不是互相兼容的，这点需要注意。
 
 ## addErrorListener(callback)
 
