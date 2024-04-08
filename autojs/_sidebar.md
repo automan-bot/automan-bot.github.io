@@ -13,10 +13,10 @@
 - [文档更新日志](/changeLog)
 - 相关资源
   <!-- - [脚手架工具](/autojsStarter) -->
-  - [AutoBot 核心](https://mobile.tntok.top/autobot_doc/)
-  - [Tntok 投屏控制](https://www.tntok.top)
+  - [AutoBot 核心](https://mobile.tntok.top/autobot_doc/ ":target=_blank")
+  - [Tntok 投屏控制](https://www.tntok.top ":target=_blank")
+  - [jquery 语法](https://jquery.cuishifeng.cn/attributeEquals.html ":target=_blank")
+  - [NodeJS 文档](https://nodejs.org/dist/latest-v16.x/docs/api/ ":target=_blank")
+  - [阮一峰 ES6 入门](https://es6.ruanyifeng.com/ ":target=_blank")
   - [ADB 用法](/awesomeAdb)
-  - [jquery 语法](https://jquery.cuishifeng.cn/attributeEquals.html)
-  - [NodeJS 文档](https://nodejs.org/dist/latest-v16.x/docs/api/)
-  - [阮一峰 ES6 入门](https://es6.ruanyifeng.com/)
 - [关于](/about)

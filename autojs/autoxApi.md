@@ -1,8 +1,10 @@
 # 项目简介
 
-- Autox.js 根据原项目协议，已经开源，github 地址：[https://github.com/automan-bot/AutoX](https://github.com/automan-bot/AutoX)
+- Autox.js 根据原项目协议，已经开源，github 地址：[https://github.com/automan-bot/AutoX](https://github.com/automan-bot/AutoX ":target=_blank")
 - 点击下载最新版本支持 Autobot 的 Autox.js 应用程序
-  - [https://github.com/automan-bot/AutoX/releases](https://github.com/automan-bot/AutoX/releases)
+  - [https://github.com/automan-bot/AutoX/releases](https://github.com/automan-bot/AutoX/releases ":target=_blank")
+  - 此版本 Autox.js 除了集成了 Autobot API 之外，与原版 autox.js 没有什么不同，后续会定期合并 Autox.js 代码。
+  - 如果需要看其他的 API 类，请移步[autox.js 官方文档](http://doc.autoxjs.com ":target=_blank")。
 
 ## 为什么要使用此版本的 Autox.js？
 
@@ -14,8 +16,8 @@
 
 ## 使用步骤：
 
-1. 手机已经安装并且运行 [AutoBot 应用程序](https://doc.tntok.top/)
-2. 下载并安装 github release 中的 [AutoX.js 应用程序](https://github.com/automan-bot/AutoX/releases)
+1. 手机已经安装并且运行 [AutoBot 应用程序](https://doc.tntok.top/ ":target=_blank")
+2. 下载并安装 github release 中的 [AutoX.js 应用程序（集成 AutobotAPI 版本）](https://github.com/automan-bot/AutoX/releases ":target=_blank")
 3. AutoJS 生成代码即可在 AutoX.js 环境中运行
 
 # Autox.js api
@@ -23,6 +25,7 @@
 ## 阅读须知
 
 - 由于 autox.js 使用的 Rhino JS 引擎，对异步支持的并不好，所以在 autox.js 中，所有的 api 都是同步的方式进行，所以无需 async await
+- AutoJS PC 版自带运行环境，自定义步骤后支持生成 autox.js 代码，两边的代码不是互相兼容的，这点需要注意。
 
 ## addErrorListener(callback)
 
@@ -68,7 +71,7 @@ autobot.resetWebSocket();
 
 ## wsSend(data)
 
-功能介绍：发送控制信息，可以参考[Autobot 文档部分-websocket 部分](https://doc.tntok.top/#/zh-cn/wsApi)
+功能介绍：发送控制信息，可以参考[Autobot 文档部分-websocket 部分](https://doc.tntok.top/#/zh-cn/wsApi ":target=_blank")
 
 - 参数：
 - 示例：
@@ -214,7 +217,7 @@ let version = autobot.version();
 console.log(version); //12405
 ```
 
-## getActiveInfo()
+<!-- ## getActiveInfo()
 
 功能介绍：获取 autobot 服务信息，可以用来判断服务是否到期
 
@@ -229,6 +232,7 @@ console.log(version); //12405
 let activeInfo = autobot.getActiveInfo();
 console.log(activeInfo);
 ```
+ -->
 
 ## getDeviceId()
 
