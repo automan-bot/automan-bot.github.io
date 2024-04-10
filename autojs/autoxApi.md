@@ -17,7 +17,7 @@
 
 1. 手机已经安装并且运行 Autobot 服务，Autobot.apk 下载 [AutoBot 应用程序](https://mobile.tntok.top/autobot_doc ":target=_blank")
 2. 下载并安装 github release 中的 [AutoX.js 应用程序（集成 AutobotAPI 版本）](https://github.com/automan-bot/AutoX/releases ":target=_blank")
-3. AutoJS 生成代码即可在 AutoX.js 环境中运行
+3. AutoJS PC 版生成代码即可在 AutoX.js 环境中运行
 
 # Autox.js api
 
@@ -25,6 +25,7 @@
 
 - 由于 autox.js 使用的 Rhino JS 引擎，对异步支持的并不好，所以在 autox.js 中，所有的 api 都是同步的方式进行，所以无需 async await
 - AutoJS PC 版自带运行环境，支持直接运行，自定义步骤后支持生成 autox.js 代码，两边的代码不是互相兼容的，这点需要注意。
+- AutoJS PC 版生成的自动化代码不支持官方的 autox.js，必须使用集成 autobot 服务的 autox.js，为什么不支持？[详见](https://www.tntok.top/2024/04/09/autojs-pc/ ":target=_blank")
 
 ## addErrorListener(callback)
 
