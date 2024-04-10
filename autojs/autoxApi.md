@@ -16,7 +16,7 @@
 
 ## 使用步骤：
 
-1. 手机已经安装并且运行 [AutoBot 应用程序](https://doc.tntok.top/ ":target=_blank")
+1. 手机已经安装并且运行 [AutoBot 应用程序](https://mobile.tntok.top/autobot_doc ":target=_blank")
 2. 下载并安装 github release 中的 [AutoX.js 应用程序（集成 AutobotAPI 版本）](https://github.com/automan-bot/AutoX/releases ":target=_blank")
 3. AutoJS 生成代码即可在 AutoX.js 环境中运行
 
@@ -102,14 +102,16 @@ autobot.wsSend({
 
 ## addClipTextChangeListener(callback)
 
-功能介绍：重置 websocket,会断开当前的 websocket 连接
+功能介绍：添加剪切板发生改变的监听，剪切板发生改变会通知此内容
 
 - 参数：
   - callback 回调
 - 示例：
 
 ```js
-autobot.resetWebSocket();
+autobot.addClipTextChangeListener(function (text) {
+  console.log(`剪切板发生改变，内容为：${text}`);
+});
 ```
 
 ## addScreenOrentationChangeListener(callback)
