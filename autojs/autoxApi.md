@@ -71,7 +71,7 @@ autobot.resetWebSocket();
 
 ## wsSend(data)
 
-功能介绍：发送控制信息，可以参考[Autobot 文档部分-websocket 部分](https://doc.tntok.top/#/zh-cn/wsApi ":target=_blank")
+功能介绍：发送控制信息，可以参考[Autobot 文档部分-websocket 部分](https://mobile.tntok.top/autobot_doc/#/zh-cn/wsApi ":target=_blank")
 
 - 参数：
 - 示例：
@@ -141,7 +141,7 @@ autobot.addScreenOrentationChangeListener(function (
 
 - 参数：
   - callback 回调
-  - 通知会携带更多参数，可以参考[AutoBot 文档-Websocket API-接收信息](https://doc.tntok.top/#/zh-cn/wsApi?id=%e6%8e%a5%e6%94%b6%e4%bf%a1%e6%81%af)
+  - 通知会携带更多参数，可以参考[AutoBot 文档-Websocket API-接收信息](https://mobile.tntok.top/autobot_doc/#/zh-cn/wsApi?id=%e6%8e%a5%e6%94%b6%e4%bf%a1%e6%81%af)
 - 示例：
 
 ```js
@@ -276,7 +276,7 @@ console.log(screenInfo);
 - 参数：
   - 无
 - 返回：
-  - systemInfo 设备的硬件，系统信息，可以参考[Autobot 文档-获取系统信息部分](https://doc.tntok.top/#/zh-cn/Api?id=%e8%8e%b7%e5%8f%96%e7%b3%bb%e7%bb%9f%e4%bf%a1%e6%81%af)
+  - systemInfo 设备的硬件，系统信息，可以参考[Autobot 文档-获取系统信息部分](https://mobile.tntok.top/autobot_doc/#/zh-cn/Api?id=%e8%8e%b7%e5%8f%96%e7%b3%bb%e7%bb%9f%e4%bf%a1%e6%81%af)
 - 示例：
 
 ```js
@@ -290,7 +290,7 @@ console.log(systemInfo);
 
 - 参数：
   - 无
-- 返回：参考[Autobot 文档-屏幕树 json](https://doc.tntok.top/#/zh-cn/Api?id=%e5%b1%8f%e5%b9%95%e6%a0%91json)
+- 返回：参考[Autobot 文档-屏幕树 json](https://mobile.tntok.top/autobot_doc/#/zh-cn/Api?id=%e5%b1%8f%e5%b9%95%e6%a0%91json)
 
 - 示例：
 
@@ -305,7 +305,7 @@ console.log(screenJson);
 
 - 参数：
   - 无
-- 返回：参考[Autobot 文档-屏幕树 xml](https://doc.tntok.top/#/zh-cn/Api?id=%e5%b1%8f%e5%b9%95%e6%a0%91xml)
+- 返回：参考[Autobot 文档-屏幕树 xml](https://mobile.tntok.top/autobot_doc/#/zh-cn/Api?id=%e5%b1%8f%e5%b9%95%e6%a0%91xml)
 
 - 示例：
 

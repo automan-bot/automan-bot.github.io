@@ -13,7 +13,7 @@
 ## 3.准备至少一台 Android 版本 7-13 的 Android 手机
 
 - 安装 AutoBot 应用，并启动服务，通过 Tntok 可以自动安装
-- 具体步骤可以参考[AutoBot 准备工作](https://doc.tntok.top/#/zh-cn/prepare)
+- 具体步骤可以参考[AutoBot 准备工作](https://mobile.tntok.top/autobot_doc/#/zh-cn/prepare)
 
 ## 4.连接电脑
 
