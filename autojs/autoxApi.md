@@ -12,11 +12,10 @@
 - AutoX.js 是 Auto.js 开源版本的分支，且一直在维护。
 - 现有的 android 自动化程序，大部分基于无障碍实现，无障碍服务不稳定，且容易被检测。
 - Autobot 服务是基于 android 调试公开的接口开发的服务，支持运行在 adb 和 root 模式，且支持 rom 集成。root 模式下和 rom 集成，无需开启 adb 调试和无障碍即可完成。
-- rom 内集成无需 root，无需开启 adb 调试，无需无障碍权限。
 
 ## 使用步骤：
 
-1. 手机已经安装并且运行 [AutoBot 应用程序](https://mobile.tntok.top/autobot_doc ":target=_blank")
+1. 手机已经安装并且运行 Autobot 服务，Autobot.apk 下载 [AutoBot 应用程序](https://mobile.tntok.top/autobot_doc ":target=_blank")
 2. 下载并安装 github release 中的 [AutoX.js 应用程序（集成 AutobotAPI 版本）](https://github.com/automan-bot/AutoX/releases ":target=_blank")
 3. AutoJS 生成代码即可在 AutoX.js 环境中运行
 
