@@ -12,19 +12,19 @@ Regardless of the activation method, it is recommended to install the Autobot ap
 
 - [Click here to download the latest version of the APK](./download.md ":target=_blank")
 
-## 2. Enable USB Debugging on the Device
+## 2. Enable Developer Options (USB Debugging)
 
-- For most phones, you can enable USB debugging by going to `Settings -> About phone -> Tapping on Build number multiple times`.
-- `Enabling USB debugging might vary depending on the phone model`. You can search online for how to enable USB debugging based on your device model.
+- Most phones can enable Developer Options by going to `Settings -> About Phone -> Tap on Build Number` repeatedly.
+- `Different phones may have different methods` to enable Developer Options. You can search for how to enable Developer Options based on your device model.
 
-`Note:`
-If some functions (or API calls) of the software are not working properly, please check if the following options are enabled in the USB debugging settings. The menu options might be different for various phones, so look for similar options:
+**Note:**
+If certain features of the software (or API calls) are not functioning properly, please check if the following options are enabled in the USB debugging interface. Menu options may vary on different phones, so look for similar options:
 
-- USB Debugging (If not enabled, the server cannot be run via USB shell. If running as root shell, you can skip this part.)
-- USB Installation (If not enabled, the APK cannot be installed via interface/page)
-- USB Debugging (Allow debug mode via USB to modify permissions, simulate clicks) (If not enabled, scripts cannot simulate clicks)
-- Enable View Attribute Inspection (If not enabled, the software cannot utilize layout division function)
-- Enable Prohibited Permission Monitoring (If this option exists, be sure to check it)
+- USB Debugging (Without this enabled, you cannot run the server via ADB. If you're running with a root shell, you can skip this part entirely.)
+- USB Installation (Without this enabled, you cannot install APKs via the page/interface.)
+- USB Debugging (Security Settings) [Allow modification of permissions via USB debugging, simulate clicks] (Without this enabled, scripts cannot simulate clicks.)
+- Enable View Attribute Inspection (Without this enabled, the software cannot use layout analysis functionality.)
+- Enable Permission Monitoring (If this option is available, please make sure to check it.)
 
 ## 3. Activate Through the Autobot Client
 
@@ -52,7 +52,7 @@ adb tcpip 5555
 
 ## Manual Activation
 
-For manual activation and ROM integration, you can contact me privately for sharing information.
+For manual activation, root (one-click start, Magisk flash package) and ROM integration can be discussed privately. [Video tutorial reference](https://space.bilibili.com/1653094687)
 
 ## Successful Service Startup
 
