@@ -210,8 +210,8 @@ path：文件所在路径``` - 请求url：`http://[ip]:18080/api/listFile` 
 	"code": 1,
 	"data": "1"
 }```## 执行shell命令 - 说明：```txt执行shell命令，可以使用\n执行多个shell命令，所有的执行结果将在一个返回内返回``` - 请求url：`http://[ip]:18080/api/execCmd` - 请求方式：`POST` - 请求header：`Content-Type:application/json;charset=UTF-8` - 请求参数：```json{
-    "timeout":1,
-    "value":"reboot"
+    "timeout": 1,
+    "value": "ls -l /sdcard/"
 }  ``` - 返回示例：```json{
 	"code": 1,
 	"data": "package:com.android.updater\n..."
@@ -324,7 +324,8 @@ path：文件所在路径``` - 请求url：`http://[ip]:18080/api/listFile` 
 	"code": 1,
 	"data": "1"
 }```## 执行AutoX.js脚本 - 说明：```txtaction: 默认传exec就行了
-script：要运行的脚本内容
+script：要运行的脚本内容（可选）
+path：设备本地脚本路径（可选，和script任远其一，同时传，path优先级比script优先级高）
 delay：延迟执行的毫秒数，默认为 0
 interval：循环运行时两次运行之间的时间间隔，默认为 0
 loopTimes：循环运行次数，默认为 1。0 为无限循环。``` - 请求url：`http://[ip]:18080/api/execScript` - 请求方式：`POST` - 请求header：`Content-Type:application/json;charset=UTF-8` - 请求参数：```json{
@@ -333,6 +334,20 @@ loopTimes：循环运行次数，默认为 1。0 为无限循环。``` - 请�
     "delay":0,
     "interval":3000,
     "loopTimes":2
+}  ``` - 返回示例：```json{
+	"code": 1,
+	"data": "1"
+}```## 执行AutoX.js脚本【本机路径】 - 说明：```txtaction: 默认传exec就行了
+script：要运行的脚本内容（可选）
+path：设备本地脚本路径（可选，和script任远其一，同时传，path优先级比script优先级高）
+delay：延迟执行的毫秒数，默认为 0
+interval：循环运行时两次运行之间的时间间隔，默认为 0
+loopTimes：循环运行次数，默认为 1。0 为无限循环。``` - 请求url：`http://[ip]:18080/api/execScript` - 请求方式：`POST` - 请求header：`Content-Type:application/json;charset=UTF-8` - 请求参数：```json{
+    "action": "exec",
+    "path": "/sdcard/script/demo.js",
+    "delay": 0,
+    "interval": 3000,
+    "loopTimes": 1
 }  ``` - 返回示例：```json{
 	"code": 1,
 	"data": "1"

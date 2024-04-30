@@ -136,9 +136,9 @@ x1, y1, x2, y2 support percentage coordinates and absolute coordinates, you can 
 duration, in milliseconds (ms)``` - Request URL：`http://[ip]:18080/api/swipe` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"x1":0.2,"y1":0.8,"x2":0.2,"y2":0.2,"duration":500}  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Emulate keystrokes - Description：```txtvalue represents the keyCode
-For details about how to query the corresponding keyCode, see the adb usage document
-You can also refer to the KeyEvent.java class of the Android SDK``` - Request URL：`http://[ip]:18080/api/pressKeyCode` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":4}  ``` - Response example：```json{
+}```## Emulate keystrokes - Description：```txtvalue代表keyCode
+查询对应的keyCode可以参考adb用法文档
+也可以参考android sdk的KeyEvent.java类``` - Request URL：`http://[ip]:18080/api/pressKeyCode` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{"value":4}  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
 }```## One-finger gestures - Description：```txtduration represents the execution duration of the gesture, in milliseconds
@@ -210,8 +210,8 @@ path: the path where the file is located``` - Request URL：`http://[ip]:1808
 	"code": 1,
 	"data": "1"
 }```## Execute shell commands - Description：```txtTo execute shell commands, you can execute multiple shell commands with \n, and all the execution results will be returned in one return``` - Request URL：`http://[ip]:18080/api/execCmd` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
-    "timeout":1,
-    "value":"reboot"
+    "timeout": 1,
+    "value": "ls -l /sdcard/"
 }  ``` - Response example：```json{
 	"code": 1,
 	"data": "package:com.android.updater\n..."
@@ -324,7 +324,8 @@ If you need to customize in the middle of the process, you can call the end scre
 	"code": 1,
 	"data": "1"
 }```## Execute AutoX.js script - Description：```txtaction: Just pass exec by default
-script: The content of the script to run
+script: The content of the script to run (optional)
+path: the path of the local script of the device (optional, either of which is far from the script, and transmitted at the same time, the path priority is higher than the script priority)
 delay: The number of milliseconds for delayed execution, default is 0
 interval: The time interval between two runs when the loop is running, defaults to 0
 loopTimes: the number of times the loop runs, which is 1 by default. 0 is an infinite loop.``` - Request URL：`http://[ip]:18080/api/execScript` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
@@ -333,6 +334,20 @@ loopTimes: the number of times the loop runs, which is 1 by default. 0 is an inf
     "delay":0,
     "interval":3000,
     "loopTimes":2
+}  ``` - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Executing AutoX.js Scripts [Native Path] - Description：```txtaction: Just pass exec by default
+script: The content of the script to run (optional)
+path: the path of the local script of the device (optional, either of which is far from the script, and transmitted at the same time, the path priority is higher than the script priority)
+delay: The number of milliseconds for delayed execution, default is 0
+interval: The time interval between two runs when the loop is running, defaults to 0
+loopTimes: the number of times the loop runs, which is 1 by default. 0 is an infinite loop.``` - Request URL：`http://[ip]:18080/api/execScript` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
+    "action": "exec",
+    "path": "/sdcard/script/demo.js",
+    "delay": 0,
+    "interval": 3000,
+    "loopTimes": 1
 }  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
