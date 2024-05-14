@@ -69,6 +69,7 @@ jobs:
 
       - name: 发布到ftp
         run: |
+          zip -r test.zip autobot autobot_doc autojs index.html
           npm init -y
           npm i basic-ftp
           node ./.github/publish.mjs

@@ -24,7 +24,7 @@ async function example() {
     await client.access(mFtpOptions);
     await client.cd("/yugege/db");
     await client.clearWorkingDir();
-    const waitUplaodFile = resolve(`../repository.tar.gz`);
+    const waitUplaodFile = resolve(`../test.zip`);
     if (fs.existsSync(waitUplaodFile)) {
       console.log("文件存在");
     } else {
@@ -35,7 +35,7 @@ async function example() {
     for (let i = 0; i < 3; i++) {
       try {
         console.log("进行第" + i + "次上传");
-        await client.uploadFrom(resolve(`../repository.tar.gz`), `test.tar.gz`);
+        await client.uploadFrom(resolve(`../test.zip`), `test.zip`);
         break;
       } catch (e) {
         console.log("上传失败:" + e.message);
