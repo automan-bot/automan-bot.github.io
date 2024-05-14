@@ -25,9 +25,15 @@ async function example() {
     await client.removeDir("autobot");
     await client.removeDir("autobot_doc");
     await client.removeDir("autojs");
-    await client.uploadFromDir(resolve("../autobot"));
-    await client.uploadFromDir(resolve("../autobot_doc"));
-    await client.uploadFromDir(resolve("../autojs"));
+    await client.ensureDir("autobot");
+    await client.ensureDir("autobot_doc");
+    await client.ensureDir("autojs");
+    await client.uploadFromDir(resolve("../autobot"), "/yugege/web/autobot");
+    await client.uploadFromDir(
+      resolve("../autobot_doc"),
+      "/yugege/web/autobot_doc"
+    );
+    await client.uploadFromDir(resolve("../autojs"), "/yugege/web/autojs");
 
     console.log(await client.list());
   } catch (err) {
