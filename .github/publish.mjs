@@ -1,6 +1,7 @@
 import path from "path";
 import * as ftp from "basic-ftp";
 import { fileURLToPath } from "url";
+import fs from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,6 +24,12 @@ async function example() {
     await client.access(mFtpOptions);
     await client.cd("/yugege/db");
     await client.clearWorkingDir();
+    const waitUplaodFile = resolve(`../repository.tar.gz`);
+    if (fs.existsSync(waitUplaodFile)) {
+      console.log("文件存在");
+    } else {
+      console.log("文件不存在");
+    }
     //失败重试3次
     for (let i = 0; i < 3; i++) {
       try {
