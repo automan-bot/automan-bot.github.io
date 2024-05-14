@@ -17,6 +17,10 @@ jobs:
     env:
       SERVER_HOST: ${{ secrets.SERVER_HOST }}
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      FTP_HOST: ${{ secrets.FTP_HOST }}
+      FTP_PORT: ${{ secrets.FTP_PORT }}
+      FTP_USER: ${{ secrets.FTP_USER }}
+      FTP_PWD: ${{ secrets.FTP_PWD }}
     strategy:
       matrix:
         node-version: [18.17.1]
@@ -65,10 +69,6 @@ jobs:
 
       - name: 发布到ftp
         run: |
-          set FTP_HOST=${{secrets.FTP_HOST}}
-          set FTP_PORT=${{secrets.FTP_PORT}}
-          set FTP_USER=${{secrets.FTP_USER}}
-          set FTP_PWD=${{secrets.FTP_PWD}}
           npm init -y
           npm i basic-ftp
           node ./.github/publish.mjs
