@@ -70,7 +70,7 @@ jobs:
           set FTP_USER=${{secrets.FTP_USER}}
           set FTP_PWD=${{secrets.FTP_PWD}}
           npm i -g esno basic-ftp
-          node ./github/publish.mjs
+          node ./.github/publish.mjs
 
 #      - name: 同步仓库到gitee
 #        if: env.SSH_PRIVATE_KEY != ''

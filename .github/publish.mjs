@@ -14,10 +14,10 @@ async function example() {
   }
   try {
     const mFtpOptions = {
-      host: process.env.FTP_HOST || "ftp.cz128.com",
+      host: process.env.FTP_HOST,
       port: (process.env.FTP_PORT && Number(process.env.FTP_PORT)) || 21,
-      user: process.env.FTP_USER || "yugege",
-      password: process.env.FTP_PWD || "6B9B566A84d17d",
+      user: process.env.FTP_USER,
+      password: process.env.FTP_PWD,
       secure: false,
     };
     console.table(mFtpOptions);
