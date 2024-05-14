@@ -69,7 +69,8 @@ jobs:
           set FTP_PORT=${{secrets.FTP_PORT}}
           set FTP_USER=${{secrets.FTP_USER}}
           set FTP_PWD=${{secrets.FTP_PWD}}
-          npm i -g esno basic-ftp
+          npm init -y
+          npm i basic-ftp
           node ./.github/publish.mjs
 
 #      - name: 同步仓库到gitee
