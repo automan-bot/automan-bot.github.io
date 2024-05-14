@@ -1,5 +1,5 @@
 import path from "path";
-import { Client } from "basic-ftp";
+import * as ftp from "basic-ftp";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
