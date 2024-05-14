@@ -22,9 +22,15 @@ async function example() {
     };
     await client.access(mFtpOptions);
     await client.cd("/yugege/web");
-    await client.removeDir("autobot");
-    await client.removeDir("autobot_doc");
-    await client.removeDir("autojs");
+    try {
+      await client.removeDir("autobot");
+    } catch (e) {}
+    try {
+      await client.removeDir("autobot_doc");
+    } catch (e) {}
+    try {
+      await client.removeDir("autojs");
+    } catch (e) {}
     await client.ensureDir("autobot");
     await client.ensureDir("autobot_doc");
     await client.ensureDir("autojs");
