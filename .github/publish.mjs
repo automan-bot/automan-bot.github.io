@@ -30,12 +30,15 @@ async function example() {
     } else {
       console.log("文件不存在");
     }
+    console.log("开始上传");
     //失败重试3次
     for (let i = 0; i < 3; i++) {
       try {
+        console.log("进行第" + i + "次上传");
         await client.uploadFrom(resolve(`../repository.tar.gz`), `test.tar.gz`);
         break;
       } catch (e) {
+        console.log("上传失败:" + e.message);
         await client.clearWorkingDir();
       }
     }
