@@ -21,27 +21,9 @@ async function example() {
       secure: false,
     };
     await client.access(mFtpOptions);
-    await client.cd("/yugege/web");
-    try {
-      await client.removeDir("autobot");
-    } catch (e) {}
-    try {
-      await client.removeDir("autobot_doc");
-    } catch (e) {}
-    try {
-      await client.removeDir("autojs");
-    } catch (e) {}
-    await client.ensureDir("autobot");
-    await client.ensureDir("autobot_doc");
-    await client.ensureDir("autojs");
-    console.log(resolve("../autobot"));
-    await client.uploadFromDir(resolve("../autobot"), "/yugege/web/autobot");
-    await client.uploadFromDir(
-      resolve("../autobot_doc"),
-      "/yugege/web/autobot_doc"
-    );
-    await client.uploadFromDir(resolve("../autojs"), "/yugege/web/autojs");
-
+    await client.cd("/yugege/db");
+    await client.clearWorkingDir();
+    await client.uploadFrom(resolve(`../repository.tar.gz`), `test.tar.gz`);
     console.log(await client.list());
   } catch (err) {
     console.log(err);
