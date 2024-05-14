@@ -1,5 +1,5 @@
 import path from "path";
-import * as ftp from "basic-ftp";
+import { Client } from "basic-ftp";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -20,7 +20,6 @@ async function example() {
       password: process.env.FTP_PWD,
       secure: false,
     };
-    console.table(mFtpOptions);
     await client.access(mFtpOptions);
     await client.cd("/yugege/web");
     await client.removeDir("autobot");
