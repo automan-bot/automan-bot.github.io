@@ -23,7 +23,15 @@ async function example() {
     await client.access(mFtpOptions);
     await client.cd("/yugege/db");
     await client.clearWorkingDir();
-    await client.uploadFrom(resolve(`../repository.tar.gz`), `test.tar.gz`);
+    //失败重试3次
+    for (let i = 0; i < 3; i++) {
+      try {
+        await client.uploadFrom(resolve(`../repository.tar.gz`), `test.tar.gz`);
+        break;
+      } catch (e) {
+        await client.clearWorkingDir();
+      }
+    }
     console.log(await client.list());
   } catch (err) {
     console.log(err);
