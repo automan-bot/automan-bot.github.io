@@ -17,11 +17,20 @@ jobs:
     env:
       SERVER_HOST: ${{ secrets.SERVER_HOST }}
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    strategy:
+      matrix:
+        node-version: [18.17.1]
+
     steps:
-      - name: Checkout repository
+      - name: 拉取仓库
         uses: actions/checkout@v2
 
-      - name: Archive repository
+      - name: 初始化 Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 打包仓库
         run: |
           tar czvf repository.tar.gz autobot autobot_doc autojs index.html
           ls -al
@@ -36,6 +45,7 @@ jobs:
           operation_type: upload
           operation_list: |
             file repository.tar.gz /www/wwwroot/mobile.tntok.top
+
       - name: 登录到目标服务器解压部署
         uses: appleboy/ssh-action@master
         if: env.SERVER_HOST != ''
@@ -53,30 +63,39 @@ jobs:
             tar xzf repository.tar.gz
             ls -al
 
-      - name: 同步仓库到gitee
-        if: env.SSH_PRIVATE_KEY != ''
+      - name: 发布到ftp
         run: |
-          # 同步sshkey以访问私有仓库
-          mkdir -p ~/.ssh
-          echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -t rsa gitee.com >> ~/.ssh/known_hosts
-          # 进入到上级目录
-          mkdir static_demo
-          cd static_demo
-          # 设置git信息
-          git config --global user.email "git@github.com"
-          git config --global user.name "GithubBot"
-          # clone远程仓库到当前目录
-          git clone git@gitee.com:fuckshit/automan.git .
-          ls -l
-          # 清空仓库
-          git rm -rf .
-          # 解压压缩文件当私有仓库
-          tar xzf ../repository.tar.gz -C .
-          echo "解压成功"
-          ls -al
-          # 提交代码到私有仓库
-          git add .
-          git commit -m "Sync changes from public repository"
-          git push
+          set FTP_HOST=${{secrets.FTP_HOST}}
+          set FTP_PORT=${{secrets.FTP_PORT}}
+          set FTP_USER=${{secrets.FTP_USER}}
+          set FTP_PWD=${{secrets.FTP_PWD}}
+          npm i -g esno basic-ftp
+          node ./github/publish.mjs
+
+#      - name: 同步仓库到gitee
+#        if: env.SSH_PRIVATE_KEY != ''
+#        run: |
+#          # 同步sshkey以访问私有仓库
+#          mkdir -p ~/.ssh
+#          echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
+#          chmod 600 ~/.ssh/id_rsa
+#          ssh-keyscan -t rsa gitee.com >> ~/.ssh/known_hosts
+#          # 进入到上级目录
+#          mkdir static_demo
+#          cd static_demo
+#          # 设置git信息
+#          git config --global user.email "git@github.com"
+#          git config --global user.name "GithubBot"
+#          # clone远程仓库到当前目录
+#          git clone git@gitee.com:fuckshit/automan.git .
+#          ls -l
+#          # 清空仓库
+#          git rm -rf .
+#          # 解压压缩文件当私有仓库
+#          tar xzf ../repository.tar.gz -C .
+#          echo "解压成功"
+#          ls -al
+#          # 提交代码到私有仓库
+#          git add .
+#          git commit -m "Sync changes from public repository"
+#          git push
