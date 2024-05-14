@@ -28,6 +28,7 @@ async function example() {
     await client.ensureDir("autobot");
     await client.ensureDir("autobot_doc");
     await client.ensureDir("autojs");
+    console.log(resolve("../autobot"));
     await client.uploadFromDir(resolve("../autobot"), "/yugege/web/autobot");
     await client.uploadFromDir(
       resolve("../autobot_doc"),
