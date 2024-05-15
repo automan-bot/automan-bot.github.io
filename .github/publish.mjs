@@ -21,9 +21,6 @@ async function example() {
       password: process.env.FTP_PWD,
       secure: false,
     };
-    await client.access(mFtpOptions);
-    await client.cd("/yugege/db");
-    await client.clearWorkingDir();
     const waitUplaodFile = resolve(`../test.zip`);
     if (fs.existsSync(waitUplaodFile)) {
       console.log("文件存在");
@@ -31,6 +28,9 @@ async function example() {
       console.log("文件不存在");
     }
     console.log("开始上传");
+    await client.access(mFtpOptions);
+    await client.cd("/yugege/db");
+    await client.clearWorkingDir();
     //失败重试3次
     for (let i = 0; i < 3; i++) {
       try {
