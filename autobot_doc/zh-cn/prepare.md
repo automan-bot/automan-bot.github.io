@@ -4,7 +4,9 @@
 
 ## Android 设备系统要求
 
-准备一台 Android 系统版本`7-13`的手机（android7.0 以下的设备可尝试）
+准备一台 Android 系统版本`7-14`的手机（android7.0 以下的设备可尝试）
+
+`注意：autobot1 1.3.11版本之后将不再支持32位安卓系统(armv7)，请使用64位的armv8系统`
 
 ## 1，安装「autobot.apk」客户端
 

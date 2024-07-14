@@ -4,7 +4,8 @@ The essence of the activation process is to run a server-side application in she
 
 ## Android Device System Requirements
 
-Prepare an Android device with system version `7-13` (devices below Android 7.0 can also be attempted).
+Prepare an Android device with system version `7-14` (devices below Android 7.0 can also be attempted).
+**Note:** Autobot1 version 1.3.11 and later will no longer support 32-bit Android systems (armv7). Please use 64-bit armv8 systems.
 
 ## 1. Install the "autobot.apk" Client
 
