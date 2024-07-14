@@ -68,10 +68,10 @@
 - 3: 表示顺时针旋转 90 度，横向模式，屏幕顶部位于左侧。``` - 请求url：`http://[ip]:18080/api/screenRotation` - 请求方式：`GET` - 请求参数：    - 无 - 返回示例：```json{
 	"code": 1,
 	"data": "0"
-}```## 屏幕树xml - 说明：```txt以xml格式返回当前屏幕的布局信息``` - 请求url：`http://[ip]:18080/api/screenXml` - 请求方式：`GET` - 请求参数：    - 无 - 返回示例：```json{
+}```## 屏幕树xml - 说明：```txt以xml格式返回当前屏幕的布局信息``` - 请求url：`http://[ip]:18080/api/screenXml` - 请求方式：`GET` - 请求参数：    - isWait：`0` (默认为等待，传0代表跳过等待) - 返回示例：```json{
 	"code": 1,
 	"data": "<?xml version='1.0' encoding='UTF-8' standalone='yes' ?><node index=\"4\" class=\"android.widget.FrameLayout\" clickable=\"false\" visibleToUser=\"true\" enabled=\"true\" resourceId=\"com.miui.aod:id/aod_mode_layout_horizontal\" text=\"\" bound=\"0,0,1080,2340\"><node index=\"5\" class=\"android.view.View\" clickable=\"false\" visibleToUser=\"true\" enabled=\"true\" resourceId=\"com.miui.aod:id/notification_animation_view\" text=\"\" bound=\"0,0,1080,2340\" /></node>"
-}```## 屏幕树json - 说明：```txt以JSON格式返回当前屏幕的布局信息``` - 请求url：`http://[ip]:18080/api/screenJson` - 请求方式：`GET` - 请求参数：    - 无 - 返回示例：```json{
+}```## 屏幕树json - 说明：```txt以JSON格式返回当前屏幕的布局信息``` - 请求url：`http://[ip]:18080/api/screenJson` - 请求方式：`GET` - 请求参数：    - isWait：`0` (默认为等待，传0代表跳过等待) - 返回示例：```json{
 	"code": 1,
 	"data": {
 		"index": 6,
@@ -166,7 +166,7 @@ points为手势的采样路径，点数越多手势越平滑``` - 请求url�
 	"code": 1,
 	"data": "1"
 }```## 设置剪切板内容 - 说明：```txt设置剪切板内容``` - 请求url：`http://[ip]:18080/api/setClipText` - 请求方式：`POST` - 请求header：`Content-Type:application/json;charset=UTF-8` - 请求参数：```json{
-    "value":"hello world"
+    "value": "hello world1234"
 }  ``` - 返回示例：```json{
 	"code": 1,
 	"data": "1"
@@ -344,7 +344,7 @@ delay：延迟执行的毫秒数，默认为 0
 interval：循环运行时两次运行之间的时间间隔，默认为 0
 loopTimes：循环运行次数，默认为 1。0 为无限循环。``` - 请求url：`http://[ip]:18080/api/execScript` - 请求方式：`POST` - 请求header：`Content-Type:application/json;charset=UTF-8` - 请求参数：```json{
     "action": "exec",
-    "path": "/sdcard/script/demo.js",
+    "path": "/sdcard/脚本/demo.js",
     "delay": 0,
     "interval": 3000,
     "loopTimes": 1
@@ -354,4 +354,17 @@ loopTimes：循环运行次数，默认为 1。0 为无限循环。``` - 请�
 }```## 退出所有AutoX.js脚本 - 说明：```txt停止所有正在运行的脚本。``` - 请求url：`http://[ip]:18080/api/stopAllScript` - 请求方式：`GET` - 请求参数：    - 无 - 返回示例：```json{
 	"code": 1,
 	"data": "1"
-}```## 退出服务 - 说明：```txt调用此接口会终止autobot的服务，如果需要重新启用服务需要你重新操作激活服务端``` - 请求url：`http://[ip]:18080/api/exit` - 请求方式：`GET` - 请求参数：    - 无 - 返回示例：    - 无
+}```## 退出服务 - 说明：```txt调用此接口会终止autobot的服务，如果需要重新启用服务需要你重新操作激活服务端``` - 请求url：`http://[ip]:18080/api/exit` - 请求方式：`GET` - 请求参数：    - 无 - 返回示例：    - 无## 开启安全模式 - 说明：```txt开启安全模式，安全模式下autobot无法获取屏幕布局（json和xml），且无法接收到通知信息，因此只能使用截屏用图色工具来做定位或者ocr进行文字定位。
+关闭安全模式后正常获取。（默认情况下安全模式是关闭的）``` - 请求url：`http://[ip]:18080/api/turnSafeModeOn` - 请求方式：`GET` - 请求参数：    - 无 - 返回示例：```json{
+	"code": 1,
+	"data": "1"
+}```## 关闭安全模式 - 说明：```txt关闭安全模式，安全模式下autobot无法获取屏幕布局（json和xml），且无法接收到通知信息。
+关闭安全模式后正常获取。（默认情况下安全模式是关闭的）``` - 请求url：`http://[ip]:18080/api/turnSafeModeOff` - 请求方式：`GET` - 请求参数：    - 无 - 返回示例：```json{
+	"code": 1,
+	"data": "1"
+}```## 是否是安全模式 - 说明：```txt判断autobot服务是否运行在安全模式，安全模式下autobot无法获取屏幕布局（json和xml），且无法接收到通知信息。
+data=1代表安全模式处于开启状态
+data=0代表安全模式处于关闭状态``` - 请求url：`http://[ip]:18080/api/isSafeMode` - 请求方式：`GET` - 请求参数：    - 无 - 返回示例：```json{
+	"code": 1,
+	"data": "1"
+}```

@@ -68,10 +68,10 @@
 - 3: Indicates a 90-degree clockwise rotation in landscape mode, with the top of the screen on the left.``` - Request URL：`http://[ip]:18080/api/screenRotation` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "0"
-}```## Screen tree XML - Description：```txtReturns the layout information of the current screen in XML format``` - Request URL：`http://[ip]:18080/api/screenXml` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Screen tree XML - Description：```txtReturns the layout information of the current screen in XML format``` - Request URL：`http://[ip]:18080/api/screenXml` - Request Method：`GET` - Request Parameters：    - isWait：`0` (The default value is waiting, and passing 0 means skipping waiting) - Response example：```json{
 	"code": 1,
 	"data": "<?xml version='1.0' encoding='UTF-8' standalone='yes' ?><node index=\"4\" class=\"android.widget.FrameLayout\" clickable=\"false\" visibleToUser=\"true\" enabled=\"true\" resourceId=\"com.miui.aod:id/aod_mode_layout_horizontal\" text=\"\" bound=\"0,0,1080,2340\"><node index=\"5\" class=\"android.view.View\" clickable=\"false\" visibleToUser=\"true\" enabled=\"true\" resourceId=\"com.miui.aod:id/notification_animation_view\" text=\"\" bound=\"0,0,1080,2340\" /></node>"
-}```## Screen tree json - Description：```txtReturns the layout information of the current screen in JSON format``` - Request URL：`http://[ip]:18080/api/screenJson` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+}```## Screen tree json - Description：```txtReturns the layout information of the current screen in JSON format``` - Request URL：`http://[ip]:18080/api/screenJson` - Request Method：`GET` - Request Parameters：    - isWait：`0` (The default value is waiting, and passing 0 means skipping waiting) - Response example：```json{
 	"code": 1,
 	"data": {
 		"index": 6,
@@ -166,7 +166,7 @@ In some specific cases, you can try this API if you can't enter a string``` -
 	"code": 1,
 	"data": "1"
 }```## Sets the clipboard contents - Description：```txtSets the clipboard contents``` - Request URL：`http://[ip]:18080/api/setClipText` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
-    "value":"hello world"
+    "value": "hello world1234"
 }  ``` - Response example：```json{
 	"code": 1,
 	"data": "1"
@@ -344,7 +344,7 @@ delay: The number of milliseconds for delayed execution, default is 0
 interval: The time interval between two runs when the loop is running, defaults to 0
 loopTimes: the number of times the loop runs, which is 1 by default. 0 is an infinite loop.``` - Request URL：`http://[ip]:18080/api/execScript` - Request Method：`POST` - Request Header：`Content-Type:application/json;charset=UTF-8` - Request Parameters：```json{
     "action": "exec",
-    "path": "/sdcard/script/demo.js",
+    "path": "/sdcard/脚本/demo.js",
     "delay": 0,
     "interval": 3000,
     "loopTimes": 1
@@ -354,4 +354,17 @@ loopTimes: the number of times the loop runs, which is 1 by default. 0 is an inf
 }```## Quit all AutoX.js scripts - Description：```txtStop all running scripts.``` - Request URL：`http://[ip]:18080/api/stopAllScript` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
 	"code": 1,
 	"data": "1"
-}```## Opting Out of Service - Description：```txtCalling this API will terminate the service of Autobot, and if you need to re-enable the service, you need to re-activate the server``` - Request URL：`http://[ip]:18080/api/exit` - Request Method：`GET` - Request Parameters：    - none - Response example：    - none
+}```## Opting Out of Service - Description：```txtCalling this API will terminate the service of Autobot, and if you need to re-enable the service, you need to re-activate the server``` - Request URL：`http://[ip]:18080/api/exit` - Request Method：`GET` - Request Parameters：    - none - Response example：    - none## Turn on Safe Mode - Description：```txtIn safe mode, Autobot cannot obtain the screen layout (JSON and XML) and cannot receive notification information, so it can only use the screenshot color tool for positioning or OCR for text positioning.
+It can be obtained normally after the safe mode is disabled. (Safe mode is off by default)``` - Request URL：`http://[ip]:18080/api/turnSafeModeOn` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Turn off Safe Mode - Description：```txtTurn off the safe mode, in which Autobot cannot obtain the screen layout (JSON and XML) and cannot receive notification information.
+It can be obtained normally after the safe mode is disabled. (Safe mode is off by default)``` - Request URL：`http://[ip]:18080/api/turnSafeModeOff` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```## Whether it's safe mode - Description：```txtCheck whether the Autobot service is running in safe mode, and in safe mode, Autobot cannot obtain the screen layout (JSON and XML) and cannot receive notification information.
+data=1 indicates that the safe mode is enabled
+data=0 indicates that the safe mode is disabled``` - Request URL：`http://[ip]:18080/api/isSafeMode` - Request Method：`GET` - Request Parameters：    - none - Response example：```json{
+	"code": 1,
+	"data": "1"
+}```

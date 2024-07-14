@@ -6,6 +6,17 @@ It's optional. You can run the server as root, in which case you don't need to e
 
 It's not mandatory, but recommended. Once the service is activated, the APK can be uninstalled, but starting it up again might be cumbersome.
 
+## What is Safe Mode?
+
+In the root environment, after proper hiding, using safe mode can better avoid detection issues by certain programs.
+
+- The drawbacks are:
+  - Unable to obtain layout information, thus text search and selector search for screen layout interfaces cannot be used.
+  - Notifications within the websocket interface will also be unavailable.
+- How to Enable Safe Mode
+  - By default, autobot operates in non-safe mode. You can call the interface to enable safe mode.
+  - In the root environment, there is a magisk package for safe mode, which starts in safe mode upon boot.
+
 ## Why are some APIs not functioning properly?
 
 Please ensure you've reviewed the preparation steps and verified whether the required options are enabled. For instance, in the "Preparation" section:
