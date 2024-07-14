@@ -177,7 +177,7 @@ autobot.addNotificationChangeListener(function (jpgFramBuffer) {
 功能介绍：修改服务的地址,默认为本机的地址
 
 - 参数：
-  - host ip，默认为`127.0.0.1`
+  - host ip，默认为`127.0.0.1:18080`
   - isSSL，默认为 false
 - 示例：
 
@@ -406,8 +406,8 @@ console.log(delCount);
 - 示例：
 
 ```js
-let delCount = autobot.deleteContact();
-console.log(delCount);
+let text = autobot.getClipText();
+console.log(text);
 ```
 
 ## clearText()
@@ -823,7 +823,7 @@ autobot.click(0.5, 0.5);
 - 示例：
 
 ```js
-autobot.click(0.5, 0.5);
+autobot.longClick(0.5, 0.5);
 ```
 
 ## press(x, y, duration)
@@ -1000,6 +1000,59 @@ autobot.unInstallApp("com.tencent.mm");
 autobot.killApp("com.tencent.mm");
 ```
 
+## turnSafeModeOn()
+
+功能介绍：开启安全模式，开启安全模式后，无法使用文字查找，选择器查找，ws 不在响应通知监听的消息
+
+- 参数：
+  - 无
+- 返回：
+  - Boolean
+- 示例：
+
+```js
+let isTurnOn = autobot.turnSafeModeOn();
+if (isTurnOn) {
+  console.log("开启成功");
+}
+```
+
+## turnSafeModeOff()
+
+功能介绍：关闭安全模式，默认状态
+
+- 参数：
+  - 无
+- 返回：
+  - Boolean
+- 示例：
+
+```js
+let isTurnOff = autobot.turnSafeModeOff();
+if (isTurnOff) {
+  console.log("关闭成功");
+}
+```
+
+## isSafeMode()
+
+功能介绍：是否处于安全模式
+
+- 参数：
+  - 无
+- 返回：
+  - Boolean
+- 示例：
+
+```js
+let isSafe = autobot.isSafeMode();
+if (isSafe) {
+  console.log("当前处于安全模式");
+} else {
+  console.log("当前处于非安全模式");
+}
+```
+
 # 兼容 AutoJS PC 版自动生成的代码 API
 
 ## tap(x, y)
@@ -1014,7 +1067,7 @@ autobot.killApp("com.tencent.mm");
 - 示例：
 
 ```js
-autobot.click(0.5, 0.5);
+autobot.tap(0.5, 0.5);
 ```
 
 ## inputKey(keyCode)
